@@ -245,6 +245,134 @@
             
               
                 
+                <a class="post-title-link" href="/2016/09/06/Reverse-Linked-List/" itemprop="url">
+                  Reverse Linked List
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <time itemprop="dateCreated" datetime="2016-09-06T22:30:54+08:00" content="2016-09-06">
+              2016-09-06
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">in</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Algorithm/" itemprop="url" rel="index">
+                    <span itemprop="name">Algorithm</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/09/06/Reverse-Linked-List/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/06/Reverse-Linked-List/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>题目：<br><a href="https://leetcode.com/problems/reverse-linked-list/" target="_blank" rel="external">https://leetcode.com/problems/reverse-linked-list/</a></p>
+<p>Reverse a singly linked list.</p>
+<p>翻转一个链表。数据结构如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line">* Definition for singly-linked list.</div><div class="line">* struct ListNode &#123;</div><div class="line">*     int val;</div><div class="line">*     struct ListNode *next;</div><div class="line">* &#125;;</div><div class="line">*/</div></pre></td></tr></table></figure>
+<p>使用迭代的方法很容易（好吧，一开始我写的代码很丑陋，下面是leetcode给的答案：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">struct ListNode* reverseList(struct ListNode* head) &#123;</div><div class="line">    struct ListNode* curr = head;</div><div class="line">    struct ListNode* prev = NULL;</div><div class="line">    while (curr)</div><div class="line">    &#123;</div><div class="line">        struct ListNode* tempNode = curr-&gt;next;</div><div class="line">        curr-&gt;next = prev;</div><div class="line">        prev = curr;</div><div class="line">        curr = tempNode;</div><div class="line">    &#125;</div><div class="line">    return prev;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>使用递归写出的代码更加简洁：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">public ListNode reverseList(ListNode head) &#123;</div><div class="line">    if (head == null || head.next == null) return head;</div><div class="line">    ListNode p = reverseList(head.next);</div><div class="line">    head.next.next = head;</div><div class="line">    head.next = null;</div><div class="line">    return p;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>显然两种方法的复杂度都是O(n)</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/08/28/MIT-6-042-Notes-1-Proofs/" itemprop="url">
                   MIT 6.042 Notes_1 Proofs
                 </a>
@@ -527,17 +655,24 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">2</span>
+              <span class="site-state-item-count">3</span>
               <span class="site-state-item-name">Artikel</span>
             </a>
           </div>
 
           
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-name">Kategorien</span>
+              </a>
+            </div>
+          
 
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-count">2</span>
                 <span class="site-state-item-name">Tags</span>
               </a>
             </div>
