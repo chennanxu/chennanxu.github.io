@@ -265,6 +265,25 @@
           </span>
 
           
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">in</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Note/" itemprop="url" rel="index">
+                    <span itemprop="name">Note</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
 
           
             
@@ -296,25 +315,20 @@
       
         
           
-            <hr>
-<p>title: MIT6.042 Notes Induction<br>date: 2016-10-13 21:55:49<br>tags: math</p>
-<h2 id="categories-Note"><a href="#categories-Note" class="headerlink" title="categories: Note"></a>categories: Note</h2><p>#PART I Definition</p>
-<p>###The well ordering principle<br>     Every nonempty set of nonnegative integers has a smalleset element</p>
-<p> This statement is known as <strong>The well ordering principle</strong>.Some sorts of obvious.We can use it to prove some propositions.</p>
+            <h1 id="PART-I-Definition"><a href="#PART-I-Definition" class="headerlink" title="PART I Definition"></a>PART I Definition</h1><h3 id="The-well-ordering-principle"><a href="#The-well-ordering-principle" class="headerlink" title="The well ordering principle"></a>The well ordering principle</h3><pre><code>Every nonempty set of nonnegative integers has a smalleset element
+</code></pre><p> This statement is known as <strong>The well ordering principle</strong>.Some sorts of obvious.We can use it to prove some propositions.</p>
 <blockquote>
 <p><strong>The template for The well ordering principle proofs</strong></p>
 <p>More generally, to prove that “$P(n)$ is True for all $N\in \mathbb N$” using  The well ordering principle you can take the following steps:</p>
 <ul>
-<li>Define the set, $C$,of counterexamples to P being true.Namely, define<pre><code>$$C::=\{n \in \mathbb N \mid P(n) \:is \:false\}$$
-</code></pre></li>
+<li>Define the set, $C$,of counterexamples to P being true.Namely, define$$C::={n \in \mathbb N \mid P(n) \:is \:false}$$</li>
 <li>Use a proof by contradiction and assume that $C$ is nonempty.</li>
 <li>By the Well Ordering Principle, there will be a smallest element, n, in $ C$.</li>
 <li>Reach a contradiction (somehow)—often by showing how to use n to find another member of $ C$ that is smaller than n. (This is the open-ended part of the proof task.)<br>-Conclude that $ C$ must be empty, that is, no counterexamples exist. QED.</li>
 </ul>
 </blockquote>
-<p>To make it clear,I’ll show you a example.<br>To prove this:for anny positive integers m and n, the faction $m/n$ can be written in lowest terms.<br>Suppose to the contrary that there were $m, n \in \mathbb Z^+$ such that the fraction $m/n$ cannot be written in lowest terms.Now let $C$ be the set of positive integers that are numerators of such fractions.Then $m \in C$, so $C$ is nonempty.Therefore by well ordering,there must be a smallest integer, $m_0 \in C$.So by definition of C, there is an integer $n_0 \gt 0$ such that<br>$$\text{the fraction } \frac {m_0}{n_0}\text{cannot be written in lowest terms}$$<br>This means that $m_0$ and $n_0$ must have a common factor,$p \gt 1$.But $$\frac {m_0/p}{n_0/p} = frac {m_0}{n_0},$$<br>so any way of expressing the left hand in lowest terms will also work for right hand, which implies,$$\text{the fraction} \frac{m_0/p}{n_0/p}$$ cannot be written in lowest terms either.<br>So by definition of $C$, the numerator,$m_0/p$ is in $C$, but $m_0/p \lt m_0$ which contradicts the fact that m0 is the smallest element of $C$.So the assumption is false,that is , the $C$ is empty and hence there are no such fractions at all.QED.</p>
-<p>###Ordinary Induction</p>
-<blockquote>
+<p>To make it clear,I’ll show you a example.<br>Consider this:for anny positive integers m and n, the faction $m/n$ can be written in lowest terms.<br>Suppose to the contrary that there were $m, n \in \mathbb Z^+$ such that the fraction $m/n$ cannot be written in lowest terms.Now let $C$ be the set of positive integers that are numerators of such fractions.Then $m \in C$, so $C$ is nonempty.Therefore by well ordering,there must be a smallest integer, $m_0 \in C$.So by definition of C, there is an integer $n_0 \gt 0$ such that<br>$$\text{the fraction } \frac {m_0}{n_0}\text{cannot be written in lowest terms}$$<br>This means that $m_0$ and $n_0$ must have a common factor,$p \gt 1$.But $$\frac {m_0/p}{n_0/p} = \frac {m_0}{n_0},$$<br>so any way of expressing the left hand in lowest terms will also work for right hand, which implies,$$\text{the fraction} \frac{m_0/p}{n_0/p}$$ cannot be written in lowest terms either.<br>So by definition of $C$, the numerator,$m_0/p$ is in $C$, but $m_0/p \lt m_0$ which contradicts the fact that m0 is the smallest element of $C$.So the assumption is false,that is , the $C$ is empty and hence there are no such fractions at all.QED.</p>
+<h3 id="Ordinary-Induction"><a href="#Ordinary-Induction" class="headerlink" title="Ordinary Induction"></a>Ordinary Induction</h3><blockquote>
 <p><strong>The Principle of Induction.</strong></p>
 <ul>
 <li>$P(0)$is true, and</li>
@@ -324,7 +338,7 @@
 </li>
 </ul>
 </blockquote>
-<p>#PART II Problems</p>
+<p>#P ART II Problems</p>
 
           
         
@@ -792,7 +806,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-count">2</span>
                 <span class="site-state-item-name">Kategorien</span>
               </a>
             </div>
@@ -801,7 +815,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-count">3</span>
                 <span class="site-state-item-name">Tags</span>
               </a>
             </div>
