@@ -84,12 +84,22 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="NoteBook">
-<meta property="og:url" content="http://chennanxu.github.io/tags/Algorithm/index.html">
+<meta name="description" content="title: MIT6.042 Notes Inductiondate: 2016-10-13 21:55:49tags: math
+categories: Note#PART I Definition
+###The well ordering principle     Every nonempty set of nonnegative integers has a smalleset ele">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MIT6.042 Notes Induction">
+<meta property="og:url" content="http://chennanxu.github.io/2016/10/13/MIT6-042-Notes-Induction/index.html">
 <meta property="og:site_name" content="NoteBook">
+<meta property="og:description" content="title: MIT6.042 Notes Inductiondate: 2016-10-13 21:55:49tags: math
+categories: Note#PART I Definition
+###The well ordering principle     Every nonempty set of nonnegative integers has a smalleset ele">
+<meta property="og:updated_time" content="2016-10-13T14:50:24.552Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="NoteBook">
+<meta name="twitter:title" content="MIT6.042 Notes Induction">
+<meta name="twitter:description" content="title: MIT6.042 Notes Inductiondate: 2016-10-13 21:55:49tags: math
+categories: Note#PART I Definition
+###The well ordering principle     Every nonempty set of nonnegative integers has a smalleset ele">
 
 
 
@@ -110,9 +120,9 @@
 
 
 
-  <link rel="canonical" href="http://chennanxu.github.io/tags/Algorithm/"/>
+  <link rel="canonical" href="http://chennanxu.github.io/2016/10/13/MIT6-042-Notes-Induction/"/>
 
-  <title> Tag: Algorithm | NoteBook </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title> MIT6.042 Notes Induction | NoteBook </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="">
@@ -133,7 +143,7 @@
     
   
 
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container one-collumn sidebar-position-left  ">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -221,46 +231,151 @@
           <div id="content" class="content">
             
 
-  <div id="posts" class="posts-collapse">
-    <div class="collection-title">
-      <h2 >
-        Algorithm
-        <small>Tag</small>
-      </h2>
-    </div>
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
 
     
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                MIT6.042 Notes Induction
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <time itemprop="dateCreated" datetime="2016-10-13T21:55:49+08:00" content="2016-10-13">
+              2016-10-13
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/10/13/MIT6-042-Notes-Induction/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/10/13/MIT6-042-Notes-Induction/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
       
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+      
+        <hr>
+<p>title: MIT6.042 Notes Induction<br>date: 2016-10-13 21:55:49<br>tags: math</p>
+<h2 id="categories-Note"><a href="#categories-Note" class="headerlink" title="categories: Note"></a>categories: Note</h2><p>#PART I Definition</p>
+<p>###The well ordering principle<br>     Every nonempty set of nonnegative integers has a smalleset element</p>
+<p> This statement is known as <strong>The well ordering principle</strong>.Some sorts of obvious.We can use it to prove some propositions.</p>
+<blockquote>
+<p><strong>The template for The well ordering principle proofs</strong></p>
+<p>More generally, to prove that “$P(n)$ is True for all $N\in \mathbb N$” using  The well ordering principle you can take the following steps:</p>
+<ul>
+<li>Define the set, $C$,of counterexamples to P being true.Namely, define<pre><code>$$C::=\{n \in \mathbb N \mid P(n) \:is \:false\}$$
+</code></pre></li>
+<li>Use a proof by contradiction and assume that $C$ is nonempty.</li>
+<li>By the Well Ordering Principle, there will be a smallest element, n, in $ C$.</li>
+<li>Reach a contradiction (somehow)—often by showing how to use n to find another member of $ C$ that is smaller than n. (This is the open-ended part of the proof task.)<br>-Conclude that $ C$ must be empty, that is, no counterexamples exist. QED.</li>
+</ul>
+</blockquote>
+<p>To make it clear,I’ll show you a example.<br>To prove this:for anny positive integers m and n, the faction $m/n$ can be written in lowest terms.<br>Suppose to the contrary that there were $m, n \in \mathbb Z^+$ such that the fraction $m/n$ cannot be written in lowest terms.Now let $C$ be the set of positive integers that are numerators of such fractions.Then $m \in C$, so $C$ is nonempty.Therefore by well ordering,there must be a smallest integer, $m_0 \in C$.So by definition of C, there is an integer $n_0 \gt 0$ such that<br>$$\text{the fraction } \frac {m_0}{n_0}\text{cannot be written in lowest terms}$$<br>This means that $m_0$ and $n_0$ must have a common factor,$p \gt 1$.But $$\frac {m_0/p}{n_0/p} = frac {m_0}{n_0},$$<br>so any way of expressing the left hand in lowest terms will also work for right hand, which implies,$$\text{the fraction} \frac{m_0/p}{n_0/p}$$ cannot be written in lowest terms either.<br>So by definition of $C$, the numerator,$m_0/p$ is in $C$, but $m_0/p \lt m_0$ which contradicts the fact that m0 is the smallest element of $C$.So the assumption is false,that is , the $C$ is empty and hence there are no such fractions at all.QED.</p>
+<p>###Ordinary Induction</p>
+<blockquote>
+<p><strong>The Principle of Induction.</strong></p>
+<ul>
+<li>$P(0)$is true, and</li>
+<li><p>$P(n)$ IMPLIES $P(n+1)$ for all nonnegative integers, n,<br>then</p>
+</li>
+<li><p>$P(m)$is true for all nonnegative integers, m.</p>
+</li>
+</ul>
+</blockquote>
+<p>#PART II Problems</p>
 
-      <h1 class="post-title">
+      
+    </div>
+
+    <div>
+      
         
-            <a class="post-title-link" href="/2016/09/06/Reverse-Linked-List/" itemprop="url">
-              
-                <span itemprop="name">Reverse Linked List</span>
-              
-            </a>
+
+      
+    </div>
+
+    <div>
+      
         
-      </h1>
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-09-06T22:30:54+08:00"
-              content="2016-09-06" >
-          09-06
-        </time>
-      </div>
+      
+    </div>
 
-    </header>
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/09/06/Reverse-Linked-List/" rel="next" title="Reverse Linked List">
+                <i class="fa fa-chevron-left"></i> Reverse Linked List
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </article>
 
 
-    
-  </div>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -268,6 +383,14 @@
 
 
           
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/10/13/MIT6-042-Notes-Induction/"
+           data-title="MIT6.042 Notes Induction" data-url="http://chennanxu.github.io/2016/10/13/MIT6-042-Notes-Induction/">
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -287,8 +410,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Übersicht
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/uploads/avatar.png"
@@ -338,6 +470,17 @@
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#categories-Note"><span class="nav-number">1.</span> <span class="nav-text">categories: Note</span></a></li></ol></div>
+            
+          </div>
+        </section>
       
 
     </div>
@@ -434,6 +577,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
 
   
 
