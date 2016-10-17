@@ -92,7 +92,7 @@
 <meta property="og:site_name" content="NoteBook">
 <meta property="og:description" content="PART I DefinitionThe well ordering principleEvery nonempty set of nonnegative integers has a smalleset element
  This statement is known as The well ordering principle.Some sorts of obvious.We can use">
-<meta property="og:updated_time" content="2016-10-17T11:53:39.772Z">
+<meta property="og:updated_time" content="2016-10-17T12:14:13.022Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MIT6.042 Notes Induction">
 <meta name="twitter:description" content="PART I DefinitionThe well ordering principleEvery nonempty set of nonnegative integers has a smalleset element
@@ -321,7 +321,7 @@
 <p><strong>The template for The well ordering principle proofs</strong></p>
 <p>More generally, to prove that “$P(n)$ is True for all $N\in \mathbb N$” using  The well ordering principle you can take the following steps:</p>
 <ul>
-<li>Define the set, $C$,of counterexamples to P being true.Namely, define$$C::={n \in \mathbb N \mid P(n) \:is \:false}$$</li>
+<li>Define the set, $C$,of counterexamples to P being true.Namely, define$$C:=\{n \in \mathbb N \mid P(n) \:is \:false\}$$</li>
 <li>Use a proof by contradiction and assume that $C$ is nonempty.</li>
 <li>By the Well Ordering Principle, there will be a smallest element, n, in $ C$.</li>
 <li>Reach a contradiction (somehow)—often by showing how to use n to find another member of $ C$ that is smaller than n. (This is the open-ended part of the proof task.)</li>
@@ -340,7 +340,7 @@
 </ul>
 </blockquote>
 <h1 id="PART-II-Problems"><a href="#PART-II-Problems" class="headerlink" title="PART II Problems"></a>PART II Problems</h1><p>Try to prove:$$1+r+r^2+r^3+…+r^n=\frac {1-r^{n+1}}{1-r}(r\ne1)\tag{1}$$</p>
-<p>First , use the well ordering principle.<br>Suppose to the contrary,some nonegative integers serve as counterexamples to it.Let’s collect them in a set:$$C:={n\in \mathbb N\mid 1+r+r^2+r^3+…+r^n\ne\frac {1-r^{n+1}}{1-r}}$$.So by well ordering principle, C has a minimum element, call it $c$.That is , $c$ is the smallest conterexample to the theorem.Since $c$ is the smallest, so for all $n\lt c$the theorem will hold.For $n=0$ the above theorem is true so $c \gt 0$.This means $c-1 \ge 0$,the equation (1) for $c-1$ is true.$$1+r+r^2+r^3+…+r^{c-1}=\frac {1-r^{c}}{1-r}(r\ne1)\tag{2}$$.But when we add $r^c$ to both sides we get $$1+r+r^2+r^3+…+r^{c-1}+r^c=\frac {1-r^{c}}{1-r}+r^c=\frac {1-r^{c+1}}{1-r}(r\ne1)\tag{3}$$Which means equation (1) does hold for $c$.This is a contradiction.So set $C$ is empty,and we’re done.QED</p>
+<p>First , use the well ordering principle.<br>Suppose to the contrary,some nonegative integers serve as counterexamples to it.Let’s collect them in a set:$$C:=\{ n\in \mathbb N\mid 1+r+r^2+r^3+…+r^n\ne\frac {1-r^{n+1}}{1-r} \}$$.So by well ordering principle, C has a minimum element, call it $c$.That is , $c$ is the smallest conterexample to the theorem.Since $c$ is the smallest, so for all $n\lt c$the theorem will hold.For $n=0$ the above theorem is true so $c \gt 0$.This means $c-1 \ge 0$,the equation (1) for $c-1$ is true.$$1+r+r^2+r^3+…+r^{c-1}=\frac {1-r^{c}}{1-r}(r\ne1)\tag{2}$$.But when we add $r^c$ to both sides we get $$1+r+r^2+r^3+…+r^{c-1}+r^c=\frac {1-r^{c}}{1-r}+r^c=\frac {1-r^{c+1}}{1-r}(r\ne1)\tag{3}$$Which means equation (1) does hold for $c$.This is a contradiction.So set $C$ is empty,and we’re done.QED</p>
 <p>Secondly ,we’ll use the induction method.<br>First for $n=0$,equation (1) obviously is true.Now,suppose for $n=k$ the equation(1) also holds,which means:$$1+r+r^2+r^3+…+r^k=\frac {1-r^{k+1}}{1-r}(r\ne1)$$is true.<br>Adding $r^{k+1}$ to both sides we get $$1+r+r^2+r^3+…+r^k +r^{k+1}=\frac {1-r^{k+1}}{1-r}+r^{k+1}=\frac {1-r^{k+2}}{1-r}(r\ne1)$$.Thus,if for $k$ the equation is true, then so for $k+1$.So for every nonegative integers the equation holds.QED</p>
 
       
