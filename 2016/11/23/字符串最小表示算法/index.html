@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="math," />
+  <meta name="keywords" content="algorithm," />
 
 
 
@@ -84,19 +84,22 @@
 
 
 
-<meta name="description" content="PART I DefinitionThe well ordering principleEvery nonempty set of nonnegative integers has a smalleset element
- This statement is known as The well ordering principle.Some sorts of obvious.We can use">
+<meta name="description" content="同构字符串首先来看下什么是同构字符串。考虑字符串“abc”，将它循环移位，可以得到“bca”,“cab”。这些通过对原字符串进行循环移位得到的字符串以及它自身，成为原字符串的同构字符串。
+而字符串的最小表示法就是指它的所有同构字符串中按字典序排列排在最小位置的那个。比如“abc”的最小表示就是它本身（类似可以定义最大表示法）。
+Naive Algorithm要求某个字符串的最小表示，最容易想到的就">
 <meta property="og:type" content="article">
-<meta property="og:title" content="MIT6.042 Notes Induction">
-<meta property="og:url" content="http://chennanxu.github.io/2016/10/13/MIT6-042-Notes-Induction/index.html">
+<meta property="og:title" content="字符串最小表示算法">
+<meta property="og:url" content="http://chennanxu.github.io/2016/11/23/字符串最小表示算法/index.html">
 <meta property="og:site_name" content="NoteBook">
-<meta property="og:description" content="PART I DefinitionThe well ordering principleEvery nonempty set of nonnegative integers has a smalleset element
- This statement is known as The well ordering principle.Some sorts of obvious.We can use">
-<meta property="og:updated_time" content="2016-10-17T12:14:13.022Z">
+<meta property="og:description" content="同构字符串首先来看下什么是同构字符串。考虑字符串“abc”，将它循环移位，可以得到“bca”,“cab”。这些通过对原字符串进行循环移位得到的字符串以及它自身，成为原字符串的同构字符串。
+而字符串的最小表示法就是指它的所有同构字符串中按字典序排列排在最小位置的那个。比如“abc”的最小表示就是它本身（类似可以定义最大表示法）。
+Naive Algorithm要求某个字符串的最小表示，最容易想到的就">
+<meta property="og:updated_time" content="2016-11-23T03:25:35.909Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="MIT6.042 Notes Induction">
-<meta name="twitter:description" content="PART I DefinitionThe well ordering principleEvery nonempty set of nonnegative integers has a smalleset element
- This statement is known as The well ordering principle.Some sorts of obvious.We can use">
+<meta name="twitter:title" content="字符串最小表示算法">
+<meta name="twitter:description" content="同构字符串首先来看下什么是同构字符串。考虑字符串“abc”，将它循环移位，可以得到“bca”,“cab”。这些通过对原字符串进行循环移位得到的字符串以及它自身，成为原字符串的同构字符串。
+而字符串的最小表示法就是指它的所有同构字符串中按字典序排列排在最小位置的那个。比如“abc”的最小表示就是它本身（类似可以定义最大表示法）。
+Naive Algorithm要求某个字符串的最小表示，最容易想到的就">
 
 
 
@@ -117,9 +120,9 @@
 
 
 
-  <link rel="canonical" href="http://chennanxu.github.io/2016/10/13/MIT6-042-Notes-Induction/"/>
+  <link rel="canonical" href="http://chennanxu.github.io/2016/11/23/字符串最小表示算法/"/>
 
-  <title> MIT6.042 Notes Induction | NoteBook </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title> 字符串最小表示算法 | NoteBook </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="">
@@ -249,7 +252,7 @@
             
             
               
-                MIT6.042 Notes Induction
+                字符串最小表示算法
               
             
           </h1>
@@ -261,38 +264,19 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">Veröffentlicht am</span>
-            <time itemprop="dateCreated" datetime="2016-10-13T21:55:49+08:00" content="2016-10-13">
-              2016-10-13
+            <time itemprop="dateCreated" datetime="2016-11-23T11:23:53+08:00" content="2016-11-23">
+              2016-11-23
             </time>
           </span>
 
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">in</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Note/" itemprop="url" rel="index">
-                    <span itemprop="name">Note</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
           
 
           
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/10/13/MIT6-042-Notes-Induction/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/10/13/MIT6-042-Notes-Induction/" itemprop="commentsCount"></span>
+                <a href="/2016/11/23/字符串最小表示算法/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/23/字符串最小表示算法/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -315,33 +299,25 @@
       
 
       
-        <h1 id="PART-I-Definition"><a href="#PART-I-Definition" class="headerlink" title="PART I Definition"></a>PART I Definition</h1><h3 id="The-well-ordering-principle"><a href="#The-well-ordering-principle" class="headerlink" title="The well ordering principle"></a>The well ordering principle</h3><pre><code>Every nonempty set of nonnegative integers has a smalleset element
-</code></pre><p> This statement is known as <strong>The well ordering principle</strong>.Some sorts of obvious.We can use it to prove some propositions.</p>
+        <h2 id="同构字符串"><a href="#同构字符串" class="headerlink" title="同构字符串"></a>同构字符串</h2><p>首先来看下什么是同构字符串。考虑字符串“abc”，将它循环移位，可以得到“bca”,“cab”。这些通过对原字符串进行循环移位得到的字符串以及它自身，成为原字符串的同构字符串。</p>
+<p>而字符串的最小表示法就是指它的所有同构字符串中按字典序排列排在最小位置的那个。比如“abc”的最小表示就是它本身（类似可以定义最大表示法）。</p>
+<h2 id="Naive-Algorithm"><a href="#Naive-Algorithm" class="headerlink" title="Naive Algorithm"></a>Naive Algorithm</h2><p>要求某个字符串的最小表示，最容易想到的就是对它的所有同构字符串进行穷举。为了说明方便，先规定以下符号：</p>
 <blockquote>
-<p><strong>The template for The well ordering principle proofs</strong></p>
-<p>More generally, to prove that “$P(n)$ is True for all $N\in \mathbb N$” using  The well ordering principle you can take the following steps:</p>
-<ul>
-<li>Define the set, $C$,of counterexamples to P being true.Namely, define$$C:=\{n \in \mathbb N \mid P(n) \:is \:false\}$$</li>
-<li>Use a proof by contradiction and assume that $C$ is nonempty.</li>
-<li>By the Well Ordering Principle, there will be a smallest element, n, in $ C$.</li>
-<li>Reach a contradiction (somehow)—often by showing how to use n to find another member of $ C$ that is smaller than n. (This is the open-ended part of the proof task.)</li>
-<li>Conclude that $ C$ must be empty, that is, no counterexamples exist. QED.</li>
-</ul>
+<p>用一个大写字母，比如S代表一个字符串<br>S[i] 代表S的第i个字符，并且第一个字符为S[0]。<br>S[i,j]表示S的一个从i开始到j结束的子串（包含i,j)。<br>S+T代表将S和T连接并且S在前组成新字符串。<br>|S|表示S的长度</p>
 </blockquote>
-<p>To make it clear,I’ll show you a example.<br>Consider this:for anny positive integers m and n, the faction $m/n$ can be written in lowest terms.<br>Suppose to the contrary that there were $m, n \in \mathbb Z^+$ such that the fraction $m/n$ cannot be written in lowest terms.Now let $C$ be the set of positive integers that are numerators of such fractions.Then $m \in C$, so $C$ is nonempty.Therefore by well ordering,there must be a smallest integer, $m_0 \in C$.So by definition of C, there is an integer $n_0 \gt 0$ such that<br>$$\text{the fraction } \frac {m_0}{n_0}\text{cannot be written in lowest terms}$$<br>This means that $m_0$ and $n_0$ must have a common factor,$p \gt 1$.But $$\frac {m_0/p}{n_0/p} = \frac {m_0}{n_0},$$<br>so any way of expressing the left hand in lowest terms will also work for right hand, which implies,$$\text{the fraction} \frac{m_0/p}{n_0/p}$$ cannot be written in lowest terms either.<br>So by definition of $C$, the numerator,$m_0/p$ is in $C$, but $m_0/p \lt m_0$ which contradicts the fact that m0 is the smallest element of $C$.So the assumption is false,that is , the $C$ is empty and hence there are no such fractions at all.QED.</p>
-<h3 id="Ordinary-Induction"><a href="#Ordinary-Induction" class="headerlink" title="Ordinary Induction"></a>Ordinary Induction</h3><blockquote>
-<p><strong>The Principle of Induction.</strong></p>
-<ul>
-<li>$P(0)$is true, and</li>
-<li><p>$P(n)$ IMPLIES $P(n+1)$ for all nonnegative integers, n,<br>then</p>
-</li>
-<li><p>$P(m)$is true for all nonnegative integers, m.</p>
-</li>
-</ul>
-</blockquote>
-<h1 id="PART-II-Problems"><a href="#PART-II-Problems" class="headerlink" title="PART II Problems"></a>PART II Problems</h1><p>Try to prove:$$1+r+r^2+r^3+…+r^n=\frac {1-r^{n+1}}{1-r}(r\ne1)\tag{1}$$</p>
-<p>First , use the well ordering principle.<br>Suppose to the contrary,some nonegative integers serve as counterexamples to it.Let’s collect them in a set:$$C:=\{ n\in \mathbb N\mid 1+r+r^2+r^3+…+r^n\ne\frac {1-r^{n+1}}{1-r} \}$$.So by well ordering principle, C has a minimum element, call it $c$.That is , $c$ is the smallest conterexample to the theorem.Since $c$ is the smallest, so for all $n\lt c$the theorem will hold.For $n=0$ the above theorem is true so $c \gt 0$.This means $c-1 \ge 0$,the equation (1) for $c-1$ is true.$$1+r+r^2+r^3+…+r^{c-1}=\frac {1-r^{c}}{1-r}(r\ne1)\tag{2}$$.But when we add $r^c$ to both sides we get $$1+r+r^2+r^3+…+r^{c-1}+r^c=\frac {1-r^{c}}{1-r}+r^c=\frac {1-r^{c+1}}{1-r}(r\ne1)\tag{3}$$Which means equation (1) does hold for $c$.This is a contradiction.So set $C$ is empty,and we’re done.QED</p>
-<p>Secondly ,we’ll use the induction method.<br>First for $n=0$,equation (1) obviously is true.Now,suppose for $n=k$ the equation(1) also holds,which means:$$1+r+r^2+r^3+…+r^k=\frac {1-r^{k+1}}{1-r}(r\ne1)$$is true.<br>Adding $r^{k+1}$ to both sides we get $$1+r+r^2+r^3+…+r^k +r^{k+1}=\frac {1-r^{k+1}}{1-r}+r^{k+1}=\frac {1-r^{k+2}}{1-r}(r\ne1)$$.Thus,if for $k$ the equation is true, then so for $k+1$.So for every nonegative integers the equation holds.QED</p>
+<p>穷举S所有的同构串有一个技巧。观察S+S,我们会发现其中出现了S的所有的同构串，所以可以对S+S进行穷举可以避免求模运算。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">len = |S|</div><div class="line">S = S + S</div><div class="line">i = 0</div><div class="line">for j = 0 to len-1:</div><div class="line">    for k = 0 to len:</div><div class="line">        if S[i+k] &gt; S[j+k]</div><div class="line">            i = j</div><div class="line">            k = 0</div><div class="line">            break</div><div class="line">        else</div><div class="line">            k = 0</div><div class="line">            break</div></pre></td></tr></table></figure>
+<p>易得，以上算法的对S+S进行穷举，最坏情况下时间复杂度为$O(n^2)$。</p>
+<h2 id="A-better-approach"><a href="#A-better-approach" class="headerlink" title="A better approach"></a>A better approach</h2><p>上面的暴力算法在小数据情况下已经足够用，但是遇到更大的数据（比如百万级）， 平方级别算法显然是不适用的。</p>
+<p>周源利用了字符串之间的信息，提出了一种$O(n)$的算法。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">    <span class="function"><span class="keyword">int</span> <span class="title">minimumExpression</span><span class="params">(<span class="built_in">string</span> s)</span> </span>&#123;</div><div class="line">            s = s + s;</div><div class="line">            <span class="keyword">int</span> len = s.size(), i = <span class="number">0</span>, j = <span class="number">1</span>, k = <span class="number">0</span>;</div><div class="line">            <span class="keyword">while</span>(i + k &lt; len &amp;&amp; j + k &lt; len) &#123;</div><div class="line">                    <span class="keyword">if</span>(s[i+k] == s[j+k]) k++;</div><div class="line">                    <span class="keyword">else</span> <span class="keyword">if</span>(s[i+k] &gt; s[j+k])</div><div class="line">                    &#123; </div><div class="line">                        i = i+k+<span class="number">1</span>; </div><div class="line">                        k = <span class="number">0</span>; </div><div class="line">                    &#125;</div><div class="line">                    <span class="keyword">else</span> <span class="keyword">if</span>(s[i+k] &lt; s[j+k]) </div><div class="line">                    &#123; </div><div class="line">                        j = j+k+<span class="number">1</span>; </div><div class="line">                        k = <span class="number">0</span>; </div><div class="line">                    &#125;</div><div class="line">                    <span class="keyword">if</span> (i == j)</div><div class="line">                        j++;</div><div class="line">   &#125;</div><div class="line">   <span class="keyword">return</span> i &lt; j ? i : j;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>为了理解这个算法，举个例子。</p>
+<p>当比较从i和j开始的子串的大小时，从i开始的子串比从j开始的小，也就意味着对于$ 0\le p \lt k$,$S[i+p]=S[j+p]$并且$S[i+k] &lt; S[j+k]$。那么我们可以得出这么个结论：从j+p开始的子串（$ 0\le p \le k$)不可能是最小表示。因为对于任何从j+p开始的子串，从i+p开始的子串总是比它小 ，因此我们可以跳过这一段，直接从j+k+1开始匹配。<br>算法的复杂度很好证明，因为每一轮比较都比较k次，并且指针向前移动k个位置，所以时间复杂度是$O(n)$。</p>
+<h2 id="算法正确性证明"><a href="#算法正确性证明" class="headerlink" title="算法正确性证明"></a>算法正确性证明</h2><p>引理1：设i &lt; j， 所有以i到j之间开头的同构字符串不比以i开头的大。<br>证明：（一旦$i \gt j$,由于具有对称性，将i和j调换，不影响证明）<br>以i和j之间的字符个数表示相应的状态，比如考虑初始状态，i = 0,j = 1,k = 0，这时处于状态0。开始有三种情况：</p>
+<p>1、$S[i] = S[j]$，k = k + 1，此时i和j之间没有字符，没有离开初始状态。<br>2、$S[i] &lt; S[j] = S[i+1]$, j = j + 1, 之间的字符为S[i+1],显然成立。<br>3、$S[i] &gt; S[j] , i = 1,j =2,回到初始状态。</p>
+<p>那么接下来有两种情况，<br>1、 处于状态0。这种情况不需要证明。<br>2、 离开状态0，到达状态k。</p>
+<p>现在考虑第二种情况。假如从0到达k状态，由于之前一直处于状态0，意味着S[i+p] = S<a href="$0 \lt p \lt k$">i</a>。现在到达了状态1，说明S[i+k] &lt; S[i]（如果S[i+k] &gt; S[i],则将i和j调换）。不变式成立。</p>
+<p>那么接下来以状态k为初始状态进行证明。<br>这时有三种情况：<br>1、停留在k状态<br>2、到达t &lt; k状态<br>3、 到达t &gt; k状态<br>这三种情况分别对应S[i+k-t]等于，大于，小于S[j+k-t]的情况。<br>//TODO </p>
 
       
     </div>
@@ -364,7 +340,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/math/" rel="tag">#math</a>
+            <a href="/tags/algorithm/" rel="tag">#algorithm</a>
           
         </div>
       
@@ -373,17 +349,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/09/06/Reverse-Linked-List/" rel="next" title="Reverse Linked List">
-                <i class="fa fa-chevron-left"></i> Reverse Linked List
+              <a href="/2016/10/20/爬虫cheet-sheet/" rel="next" title="爬虫cheet sheet">
+                <i class="fa fa-chevron-left"></i> 爬虫cheet sheet
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/10/20/爬虫cheet-sheet/" rel="prev" title="爬虫cheet sheet">
-                爬虫cheet sheet <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -409,8 +381,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/10/13/MIT6-042-Notes-Induction/"
-           data-title="MIT6.042 Notes Induction" data-url="http://chennanxu.github.io/2016/10/13/MIT6-042-Notes-Induction/">
+      <div class="ds-thread" data-thread-key="2016/11/23/字符串最小表示算法/"
+           data-title="字符串最小表示算法" data-url="http://chennanxu.github.io/2016/11/23/字符串最小表示算法/">
       </div>
     
   </div>
@@ -501,7 +473,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#PART-I-Definition"><span class="nav-number">1.</span> <span class="nav-text">PART I Definition</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#The-well-ordering-principle"><span class="nav-number">1.0.1.</span> <span class="nav-text">The well ordering principle</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Ordinary-Induction"><span class="nav-number">1.0.2.</span> <span class="nav-text">Ordinary Induction</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#PART-II-Problems"><span class="nav-number">2.</span> <span class="nav-text">PART II Problems</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#同构字符串"><span class="nav-number">1.</span> <span class="nav-text">同构字符串</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Naive-Algorithm"><span class="nav-number">2.</span> <span class="nav-text">Naive Algorithm</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#A-better-approach"><span class="nav-number">3.</span> <span class="nav-text">A better approach</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#算法正确性证明"><span class="nav-number">4.</span> <span class="nav-text">算法正确性证明</span></a></li></ol></div>
             
           </div>
         </section>
