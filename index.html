@@ -245,6 +245,123 @@
             
               
                 
+                <a class="post-title-link" href="/2016/12/07/Codeforces-Round-383-总结/" itemprop="url">
+                  Codeforces Round #383 总结
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posted on</span>
+            <time itemprop="dateCreated" datetime="2016-12-07T16:04:51+08:00" content="2016-12-07">
+              2016-12-07
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/12/07/Codeforces-Round-383-总结/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/07/Codeforces-Round-383-总结/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>第一次参加codeforeces的线上比赛，最后A了两道水题，事后发现B题因为没有使用long long 而溢出了（汗），所以实际上A了一题。最后排名3561，分数达到1409。</p>
+<hr>
+<p>题解在这里<a href="http://codeforces.com/blog/entry/48871" target="_blank" rel="external">http://codeforces.com/blog/entry/48871</a></p>
+<p>这里讲一下前三题思路。</p>
+<h2 id="742A-Arpa’s-hard-exam-and-Mehrdad’s-naive-cheat"><a href="#742A-Arpa’s-hard-exam-and-Mehrdad’s-naive-cheat" class="headerlink" title="742A - Arpa’s hard exam and Mehrdad’s naive cheat"></a>742A - Arpa’s hard exam and Mehrdad’s naive cheat</h2><p>一道很直白的题，看完题之后写出暴力算法：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">int</span> n;</div><div class="line">    <span class="built_in">cin</span> &gt;&gt; n;</div><div class="line">    <span class="keyword">int</span> ans = <span class="number">1378</span>;</div><div class="line">    <span class="keyword">while</span>(--n)</div><div class="line">    &#123;</div><div class="line">        ans *= <span class="number">1378</span>;</div><div class="line">        ans %= <span class="number">10</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">cout</span> &lt;&lt; ans%<span class="number">10</span> &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>然后喜闻乐见的TLE了。其实想一下，由于只取最后一位数字，而一共只有10个数字，所以必然会出现循环。观察了一下规律写出第二版<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="keyword">int</span> ans[<span class="number">4</span>] = &#123;<span class="number">8</span>, <span class="number">4</span>, <span class="number">2</span>, <span class="number">6</span>&#125;;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">int</span> n;</div><div class="line">    <span class="built_in">cin</span> &gt;&gt; n;</div><div class="line">    <span class="built_in">cout</span> &lt;&lt; ans[(n<span class="number">-1</span>)%<span class="number">4</span>] &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>然而由于没有考虑边界条件(n=0)被Hack了。</p>
+<p>补上边界条件后终于A了:<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="keyword">int</span> ans[<span class="number">4</span>] = &#123;<span class="number">8</span>, <span class="number">4</span>, <span class="number">2</span>, <span class="number">6</span>&#125;;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">int</span> n;</div><div class="line">    <span class="built_in">cin</span> &gt;&gt; n;</div><div class="line">    <span class="keyword">if</span> (n == <span class="number">0</span>)</div><div class="line">        <span class="built_in">cout</span> &lt;&lt; <span class="number">1</span> &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">    <span class="keyword">else</span></div><div class="line">        <span class="built_in">cout</span> &lt;&lt; ans[(n<span class="number">-1</span>)%<span class="number">4</span>] &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="742B-Arpa’s-obvious-problem-and-Mehrdad’s-terrible-solution"><a href="#742B-Arpa’s-obvious-problem-and-Mehrdad’s-terrible-solution" class="headerlink" title="742B - Arpa’s obvious problem and Mehrdad’s terrible solution"></a>742B - Arpa’s obvious problem and Mehrdad’s terrible solution</h2><p>第二题二话不说用Hash:<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="built_in">map</span>&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; num;</div><div class="line"><span class="keyword">int</span> nums[<span class="number">100001</span>];</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">    ios::sync_with_stdio(<span class="literal">false</span>);</div><div class="line">    <span class="keyword">int</span> n, x;</div><div class="line">    <span class="built_in">cin</span> &gt;&gt; n &gt;&gt; x;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; n;i++)</div><div class="line">        <span class="built_in">cin</span> &gt;&gt; nums[i];</div><div class="line">    <span class="keyword">long</span> <span class="keyword">long</span> ans = <span class="number">0</span>;</div><div class="line">    <span class="built_in">map</span>&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt;::iterator iter;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; n;i++)</div><div class="line">    &#123;</div><div class="line">        <span class="keyword">if</span> ((iter = num.find(nums[i] ^ x)) != num.end())</div><div class="line">        &#123;</div><div class="line">            ans += num[nums[i] ^ x];</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span> ((iter = num.find(nums[i])) != num.end())</div><div class="line">            num[nums[i]] += <span class="number">1</span>;</div><div class="line">        <span class="keyword">else</span></div><div class="line">            num[nums[i]] = <span class="number">1</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">cout</span> &lt;&lt; ans &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>ps:开始ans用的int，然后悲剧了。<br>但发现由于n的大小不超过$10^5$，所以可以开个数组，直接存：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">2e5</span> + <span class="number">17</span>;</div><div class="line"><span class="keyword">int</span> n, x, cnt[maxn];</div><div class="line"><span class="keyword">long</span> <span class="keyword">long</span> ans;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">    ios::sync_with_stdio(<span class="number">0</span>), <span class="built_in">cin</span>.tie(<span class="number">0</span>);</div><div class="line">    <span class="built_in">cin</span> &gt;&gt; n &gt;&gt; x;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>, a; i &lt; n; i++)&#123;</div><div class="line">	    <span class="built_in">cin</span> &gt;&gt; a;</div><div class="line">	    ans += cnt[a ^ x];</div><div class="line">	    cnt[a]++;</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">cout</span> &lt;&lt; ans &lt;&lt; <span class="string">'\n'</span>;</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="741A-Arpa’s-loud-Owf-and-Mehrdad’s-evil-plan"><a href="#741A-Arpa’s-loud-Owf-and-Mehrdad’s-evil-plan" class="headerlink" title="741A - Arpa’s loud Owf and Mehrdad’s evil plan"></a>741A - Arpa’s loud Owf and Mehrdad’s evil plan</h2><p>读完题后，以为是用<a href="https://www.wikiwand.com/en/Cycle_detection" target="_blank" rel="external">Floyd cycle detection</a>，花了40分钟写好后一直WA。等后面看了Editorial之后才发现是自己理解错了题意。我以为是要找到链中的最小环，结果是要找所有环的最小公倍数，<del>这就很气</del>。1000多分就没了。</p>
+<p>后来看了题解后写了一个AC的版本：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="keyword">long</span> <span class="keyword">long</span> S[<span class="number">1000</span>];</div><div class="line"><span class="keyword">int</span> G[<span class="number">101</span>];</div><div class="line"><span class="keyword">bool</span> vis[<span class="number">101</span>];</div><div class="line"><span class="keyword">int</span> ans;</div><div class="line"><span class="keyword">bool</span> inedge[<span class="number">101</span>];</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> n)</span></span></div><div class="line">&#123;</div><div class="line">    vis[n] = <span class="literal">true</span>;</div><div class="line">    ans++;</div><div class="line">    <span class="keyword">if</span> (!vis[G[n]])</div><div class="line">        dfs(G[n]);</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">gcd</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">if</span> (a &lt; b)</div><div class="line">       <span class="keyword">return</span> gcd(b, a);</div><div class="line">    <span class="keyword">if</span> (b == <span class="number">0</span>)</div><div class="line">        <span class="keyword">return</span> a;</div><div class="line">    <span class="keyword">return</span> gcd(b, a%b);</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">lcm</span><span class="params">(<span class="keyword">int</span> k)</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">int</span> ret = S[<span class="number">0</span>];</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>;i &lt; k;i++)</div><div class="line">    &#123;</div><div class="line">        ret = ret*S[i] / gcd(ret,S[i]);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> ret;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">    ios::sync_with_stdio(<span class="literal">false</span>);<span class="built_in">cin</span>.tie(<span class="literal">false</span>);</div><div class="line">    <span class="keyword">int</span> n;</div><div class="line">    <span class="built_in">cin</span> &gt;&gt; n;</div><div class="line">    <span class="built_in">memset</span>(vis, <span class="number">0</span>, <span class="keyword">sizeof</span>(vis));</div><div class="line">    <span class="built_in">memset</span>(G, <span class="number">0</span>, <span class="keyword">sizeof</span>(vis));</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; n;i++)</div><div class="line">    &#123;</div><div class="line">        <span class="keyword">int</span> crush;</div><div class="line">        <span class="built_in">cin</span> &gt;&gt; crush;</div><div class="line">        G[i+<span class="number">1</span>] = crush;</div><div class="line">        inedge[crush] = <span class="literal">true</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">bool</span> flag = <span class="literal">true</span>;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>;i &lt;= n;i++)</div><div class="line">    &#123;</div><div class="line">        <span class="keyword">if</span> (!inedge[i])</div><div class="line">        &#123;</div><div class="line">            flag = <span class="literal">false</span>;</div><div class="line">            <span class="keyword">break</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span> (flag)</div><div class="line">    &#123;</div><div class="line">        <span class="keyword">int</span> k = <span class="number">0</span>;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; n;i++)</div><div class="line">        &#123;</div><div class="line">            ans = <span class="number">0</span>;</div><div class="line">            <span class="keyword">if</span> (!vis[i+<span class="number">1</span>])</div><div class="line">            &#123;</div><div class="line">                dfs(i+<span class="number">1</span>);</div><div class="line">                <span class="keyword">if</span> (ans%<span class="number">2</span> == <span class="number">0</span>)</div><div class="line">                    ans /= <span class="number">2</span>;</div><div class="line">                S[k++] = ans;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="built_in">cout</span> &lt;&lt; lcm(k) &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">else</span></div><div class="line">    &#123;</div><div class="line">        <span class="built_in">cout</span> &lt;&lt; <span class="number">-1</span> &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>DFS找环，没什么好说的。</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>虽然达到了一开始设定的目标(1400)，但是结果并不那么让人满意。最后只A了两道水题。但是作为第一次，也许还算不错了。经过这次，暴露出几个问题。<br>首先就是手速太慢，前两道简单题就花了1个小时的时间，说明还是不够熟练，第二题用map的时候还要去查资料，蛋疼(<del>为什么那么熟练啊</del>）。<br>然后是对题目理解有偏差。第三题就是这样。直接导致一道很水的题没做出来。</p>
+<p>下一个目标就是冲上1600，争取能把Div2都做完。</p>
+<p>以后要开始怼论文了，接下来又是期末考试，刷题一刷刷一天的日子看来是一去不复返了，且做且珍惜。</p>
+<p>PS：之前说只要CF上了1400就买个静电容键盘，那么问题来了，是买HHKB呢还是Realforce？</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/11/28/Ceil函数实现/" itemprop="url">
                   Ceil函数实现
                 </a>
@@ -1131,7 +1248,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">7</span>
+              <span class="site-state-item-count">8</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
@@ -1148,7 +1265,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">5</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>

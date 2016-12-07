@@ -1,0 +1,652 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="contest," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="第一次参加codeforeces的线上比赛，最后A了两道水题，事后发现B题因为没有使用long long 而溢出了（汗），所以实际上A了一题。最后排名3561，分数达到1409。
+
+题解在这里http://codeforces.com/blog/entry/48871
+这里讲一下前三题思路。
+742A - Arpa’s hard exam and Mehrdad’s naive cheat一道很直">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Codeforces Round #383 总结">
+<meta property="og:url" content="http://chennanxu.github.io/2016/12/07/Codeforces-Round-383-总结/index.html">
+<meta property="og:site_name" content="NoteBook">
+<meta property="og:description" content="第一次参加codeforeces的线上比赛，最后A了两道水题，事后发现B题因为没有使用long long 而溢出了（汗），所以实际上A了一题。最后排名3561，分数达到1409。
+
+题解在这里http://codeforces.com/blog/entry/48871
+这里讲一下前三题思路。
+742A - Arpa’s hard exam and Mehrdad’s naive cheat一道很直">
+<meta property="og:updated_time" content="2016-12-07T08:34:14.281Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Codeforces Round #383 总结">
+<meta name="twitter:description" content="第一次参加codeforeces的线上比赛，最后A了两道水题，事后发现B题因为没有使用long long 而溢出了（汗），所以实际上A了一题。最后排名3561，分数达到1409。
+
+题解在这里http://codeforces.com/blog/entry/48871
+这里讲一下前三题思路。
+742A - Arpa’s hard exam and Mehrdad’s naive cheat一道很直">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: 'Author'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://chennanxu.github.io/2016/12/07/Codeforces-Round-383-总结/"/>
+
+  <title> Codeforces Round #383 总结 | NoteBook </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">NoteBook</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Codeforces Round #383 总结
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posted on</span>
+            <time itemprop="dateCreated" datetime="2016-12-07T16:04:51+08:00" content="2016-12-07">
+              2016-12-07
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/12/07/Codeforces-Round-383-总结/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/07/Codeforces-Round-383-总结/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>第一次参加codeforeces的线上比赛，最后A了两道水题，事后发现B题因为没有使用long long 而溢出了（汗），所以实际上A了一题。最后排名3561，分数达到1409。</p>
+<hr>
+<p>题解在这里<a href="http://codeforces.com/blog/entry/48871" target="_blank" rel="external">http://codeforces.com/blog/entry/48871</a></p>
+<p>这里讲一下前三题思路。</p>
+<h2 id="742A-Arpa’s-hard-exam-and-Mehrdad’s-naive-cheat"><a href="#742A-Arpa’s-hard-exam-and-Mehrdad’s-naive-cheat" class="headerlink" title="742A - Arpa’s hard exam and Mehrdad’s naive cheat"></a>742A - Arpa’s hard exam and Mehrdad’s naive cheat</h2><p>一道很直白的题，看完题之后写出暴力算法：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">int</span> n;</div><div class="line">    <span class="built_in">cin</span> &gt;&gt; n;</div><div class="line">    <span class="keyword">int</span> ans = <span class="number">1378</span>;</div><div class="line">    <span class="keyword">while</span>(--n)</div><div class="line">    &#123;</div><div class="line">        ans *= <span class="number">1378</span>;</div><div class="line">        ans %= <span class="number">10</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">cout</span> &lt;&lt; ans%<span class="number">10</span> &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>然后喜闻乐见的TLE了。其实想一下，由于只取最后一位数字，而一共只有10个数字，所以必然会出现循环。观察了一下规律写出第二版<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="keyword">int</span> ans[<span class="number">4</span>] = &#123;<span class="number">8</span>, <span class="number">4</span>, <span class="number">2</span>, <span class="number">6</span>&#125;;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">int</span> n;</div><div class="line">    <span class="built_in">cin</span> &gt;&gt; n;</div><div class="line">    <span class="built_in">cout</span> &lt;&lt; ans[(n<span class="number">-1</span>)%<span class="number">4</span>] &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>然而由于没有考虑边界条件(n=0)被Hack了。</p>
+<p>补上边界条件后终于A了:<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="keyword">int</span> ans[<span class="number">4</span>] = &#123;<span class="number">8</span>, <span class="number">4</span>, <span class="number">2</span>, <span class="number">6</span>&#125;;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">int</span> n;</div><div class="line">    <span class="built_in">cin</span> &gt;&gt; n;</div><div class="line">    <span class="keyword">if</span> (n == <span class="number">0</span>)</div><div class="line">        <span class="built_in">cout</span> &lt;&lt; <span class="number">1</span> &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">    <span class="keyword">else</span></div><div class="line">        <span class="built_in">cout</span> &lt;&lt; ans[(n<span class="number">-1</span>)%<span class="number">4</span>] &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="742B-Arpa’s-obvious-problem-and-Mehrdad’s-terrible-solution"><a href="#742B-Arpa’s-obvious-problem-and-Mehrdad’s-terrible-solution" class="headerlink" title="742B - Arpa’s obvious problem and Mehrdad’s terrible solution"></a>742B - Arpa’s obvious problem and Mehrdad’s terrible solution</h2><p>第二题二话不说用Hash:<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="built_in">map</span>&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; num;</div><div class="line"><span class="keyword">int</span> nums[<span class="number">100001</span>];</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">    ios::sync_with_stdio(<span class="literal">false</span>);</div><div class="line">    <span class="keyword">int</span> n, x;</div><div class="line">    <span class="built_in">cin</span> &gt;&gt; n &gt;&gt; x;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; n;i++)</div><div class="line">        <span class="built_in">cin</span> &gt;&gt; nums[i];</div><div class="line">    <span class="keyword">long</span> <span class="keyword">long</span> ans = <span class="number">0</span>;</div><div class="line">    <span class="built_in">map</span>&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt;::iterator iter;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; n;i++)</div><div class="line">    &#123;</div><div class="line">        <span class="keyword">if</span> ((iter = num.find(nums[i] ^ x)) != num.end())</div><div class="line">        &#123;</div><div class="line">            ans += num[nums[i] ^ x];</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span> ((iter = num.find(nums[i])) != num.end())</div><div class="line">            num[nums[i]] += <span class="number">1</span>;</div><div class="line">        <span class="keyword">else</span></div><div class="line">            num[nums[i]] = <span class="number">1</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">cout</span> &lt;&lt; ans &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>ps:开始ans用的int，然后悲剧了。<br>但发现由于n的大小不超过$10^5$，所以可以开个数组，直接存：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">2e5</span> + <span class="number">17</span>;</div><div class="line"><span class="keyword">int</span> n, x, cnt[maxn];</div><div class="line"><span class="keyword">long</span> <span class="keyword">long</span> ans;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">    ios::sync_with_stdio(<span class="number">0</span>), <span class="built_in">cin</span>.tie(<span class="number">0</span>);</div><div class="line">    <span class="built_in">cin</span> &gt;&gt; n &gt;&gt; x;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>, a; i &lt; n; i++)&#123;</div><div class="line">	    <span class="built_in">cin</span> &gt;&gt; a;</div><div class="line">	    ans += cnt[a ^ x];</div><div class="line">	    cnt[a]++;</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">cout</span> &lt;&lt; ans &lt;&lt; <span class="string">'\n'</span>;</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="741A-Arpa’s-loud-Owf-and-Mehrdad’s-evil-plan"><a href="#741A-Arpa’s-loud-Owf-and-Mehrdad’s-evil-plan" class="headerlink" title="741A - Arpa’s loud Owf and Mehrdad’s evil plan"></a>741A - Arpa’s loud Owf and Mehrdad’s evil plan</h2><p>读完题后，以为是用<a href="https://www.wikiwand.com/en/Cycle_detection" target="_blank" rel="external">Floyd cycle detection</a>，花了40分钟写好后一直WA。等后面看了Editorial之后才发现是自己理解错了题意。我以为是要找到链中的最小环，结果是要找所有环的最小公倍数，<del>这就很气</del>。1000多分就没了。</p>
+<p>后来看了题解后写了一个AC的版本：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="keyword">long</span> <span class="keyword">long</span> S[<span class="number">1000</span>];</div><div class="line"><span class="keyword">int</span> G[<span class="number">101</span>];</div><div class="line"><span class="keyword">bool</span> vis[<span class="number">101</span>];</div><div class="line"><span class="keyword">int</span> ans;</div><div class="line"><span class="keyword">bool</span> inedge[<span class="number">101</span>];</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> n)</span></span></div><div class="line">&#123;</div><div class="line">    vis[n] = <span class="literal">true</span>;</div><div class="line">    ans++;</div><div class="line">    <span class="keyword">if</span> (!vis[G[n]])</div><div class="line">        dfs(G[n]);</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">gcd</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">if</span> (a &lt; b)</div><div class="line">       <span class="keyword">return</span> gcd(b, a);</div><div class="line">    <span class="keyword">if</span> (b == <span class="number">0</span>)</div><div class="line">        <span class="keyword">return</span> a;</div><div class="line">    <span class="keyword">return</span> gcd(b, a%b);</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">lcm</span><span class="params">(<span class="keyword">int</span> k)</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">int</span> ret = S[<span class="number">0</span>];</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>;i &lt; k;i++)</div><div class="line">    &#123;</div><div class="line">        ret = ret*S[i] / gcd(ret,S[i]);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> ret;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">    ios::sync_with_stdio(<span class="literal">false</span>);<span class="built_in">cin</span>.tie(<span class="literal">false</span>);</div><div class="line">    <span class="keyword">int</span> n;</div><div class="line">    <span class="built_in">cin</span> &gt;&gt; n;</div><div class="line">    <span class="built_in">memset</span>(vis, <span class="number">0</span>, <span class="keyword">sizeof</span>(vis));</div><div class="line">    <span class="built_in">memset</span>(G, <span class="number">0</span>, <span class="keyword">sizeof</span>(vis));</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; n;i++)</div><div class="line">    &#123;</div><div class="line">        <span class="keyword">int</span> crush;</div><div class="line">        <span class="built_in">cin</span> &gt;&gt; crush;</div><div class="line">        G[i+<span class="number">1</span>] = crush;</div><div class="line">        inedge[crush] = <span class="literal">true</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">bool</span> flag = <span class="literal">true</span>;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>;i &lt;= n;i++)</div><div class="line">    &#123;</div><div class="line">        <span class="keyword">if</span> (!inedge[i])</div><div class="line">        &#123;</div><div class="line">            flag = <span class="literal">false</span>;</div><div class="line">            <span class="keyword">break</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span> (flag)</div><div class="line">    &#123;</div><div class="line">        <span class="keyword">int</span> k = <span class="number">0</span>;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; n;i++)</div><div class="line">        &#123;</div><div class="line">            ans = <span class="number">0</span>;</div><div class="line">            <span class="keyword">if</span> (!vis[i+<span class="number">1</span>])</div><div class="line">            &#123;</div><div class="line">                dfs(i+<span class="number">1</span>);</div><div class="line">                <span class="keyword">if</span> (ans%<span class="number">2</span> == <span class="number">0</span>)</div><div class="line">                    ans /= <span class="number">2</span>;</div><div class="line">                S[k++] = ans;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="built_in">cout</span> &lt;&lt; lcm(k) &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">else</span></div><div class="line">    &#123;</div><div class="line">        <span class="built_in">cout</span> &lt;&lt; <span class="number">-1</span> &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>DFS找环，没什么好说的。</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>虽然达到了一开始设定的目标(1400)，但是结果并不那么让人满意。最后只A了两道水题。但是作为第一次，也许还算不错了。经过这次，暴露出几个问题。<br>首先就是手速太慢，前两道简单题就花了1个小时的时间，说明还是不够熟练，第二题用map的时候还要去查资料，蛋疼(<del>为什么那么熟练啊</del>）。<br>然后是对题目理解有偏差。第三题就是这样。直接导致一道很水的题没做出来。</p>
+<p>下一个目标就是冲上1600，争取能把Div2都做完。</p>
+<p>以后要开始怼论文了，接下来又是期末考试，刷题一刷刷一天的日子看来是一去不复返了，且做且珍惜。</p>
+<p>PS：之前说只要CF上了1400就买个静电容键盘，那么问题来了，是买HHKB呢还是Realforce？</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/contest/" rel="tag">#contest</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/11/28/Ceil函数实现/" rel="next" title="Ceil函数实现">
+                <i class="fa fa-chevron-left"></i> Ceil函数实现
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/12/07/Codeforces-Round-383-总结/"
+           data-title="Codeforces Round #383 总结" data-url="http://chennanxu.github.io/2016/12/07/Codeforces-Round-383-总结/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.png"
+               alt="ChenNanxu" />
+          <p class="site-author-name" itemprop="name">ChenNanxu</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">8</span>
+              <span class="site-state-item-name">posts</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#742A-Arpa’s-hard-exam-and-Mehrdad’s-naive-cheat"><span class="nav-number">1.</span> <span class="nav-text">742A - Arpa’s hard exam and Mehrdad’s naive cheat</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#742B-Arpa’s-obvious-problem-and-Mehrdad’s-terrible-solution"><span class="nav-number">2.</span> <span class="nav-text">742B - Arpa’s obvious problem and Mehrdad’s terrible solution</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#741A-Arpa’s-loud-Owf-and-Mehrdad’s-evil-plan"><span class="nav-number">3.</span> <span class="nav-text">741A - Arpa’s loud Owf and Mehrdad’s evil plan</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number"></span> <span class="nav-text">总结</span></a></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ChenNanxu</span>
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"chennanxu1999"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    <script src="/vendors/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+  
+  
+
+  
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+  </script>
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for (i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  </script>
+  <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+  
+
+  
+
+</body>
+</html>
