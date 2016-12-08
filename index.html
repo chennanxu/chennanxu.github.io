@@ -172,7 +172,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Home
+            Startseite
           </a>
         </li>
       
@@ -182,7 +182,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
             
-            Categories
+            Kategorien
           </a>
         </li>
       
@@ -192,7 +192,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archives
+            Archiv
           </a>
         </li>
       
@@ -245,6 +245,111 @@
             
               
                 
+                <a class="post-title-link" href="/2016/12/08/UVA10047-扩展BFS/" itemprop="url">
+                  UVA10047-扩展BFS
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <time itemprop="dateCreated" datetime="2016-12-08T20:51:15+08:00" content="2016-12-08">
+              2016-12-08
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/12/08/UVA10047-扩展BFS/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/08/UVA10047-扩展BFS/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>这道题一开始没有什么思路，后来上网看了下别人的题解才发现原来就是一种BFS。</p>
+<p>之前迷宫类题目（无加权），直接可以用BFS来做，但是这道题加入了另外两个条件——方向和颜色。其实这就相当于将原来的二维空间扩展到了四维空间。我们要做的就是在这四维状态空间中进行搜索。和原来的二维情况不同的是，这个题目加入了转向的要素，也就是说相邻状态的距离间隔不一定是1，这就比较坑爹，不能直接使用队列来进行存储，需要用一个优先队列（小顶堆）。也许有更好的方案，请务必告诉我。</p>
+<p>有一个需要注意的点是，每一次转向所处的状态不能漏掉（转向后还没开始行走），我一开始就是没有注意这一点被坑了。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="keyword">char</span> maze[<span class="number">25</span>][<span class="number">25</span>];</div><div class="line"><span class="keyword">bool</span> vis[<span class="number">25</span>][<span class="number">25</span>][<span class="number">5</span>][<span class="number">4</span>];</div><div class="line"><span class="keyword">struct</span>  Node&#123;</div><div class="line">    <span class="keyword">int</span> r;</div><div class="line">    <span class="keyword">int</span> c;</div><div class="line">    <span class="keyword">int</span> color;</div><div class="line">    <span class="keyword">int</span> d;</div><div class="line">    <span class="keyword">int</span> time;</div><div class="line">&#125;;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">int</span> m, n;</div><div class="line">    <span class="keyword">auto</span> cmp = [](Node left, Node right) &#123; <span class="keyword">return</span> (left.time) &gt; (right.time);&#125;;</div><div class="line">    priority_queue&lt;Node, <span class="built_in">vector</span>&lt;Node&gt;, <span class="keyword">decltype</span>(cmp)&gt; Q(cmp);</div><div class="line">    <span class="keyword">int</span> kase = <span class="number">1</span>;</div><div class="line"></div><div class="line">    <span class="keyword">while</span> (<span class="built_in">cin</span> &gt;&gt; m &gt;&gt; n)</div><div class="line">    &#123;</div><div class="line">        <span class="keyword">if</span> (m == <span class="number">0</span>)</div><div class="line">            <span class="keyword">break</span>;</div><div class="line">        <span class="keyword">while</span> (!Q.empty())</div><div class="line">            Q.pop();</div><div class="line">        <span class="built_in">memset</span>(vis, <span class="number">0</span>, <span class="keyword">sizeof</span>(vis));</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; m;i++)</div><div class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>;j &lt; n;j++)</div><div class="line">                <span class="built_in">cin</span> &gt;&gt; maze[i][j];</div><div class="line">        Node start;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; m;i++)</div><div class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>;j &lt; n;j++)</div><div class="line">            &#123;</div><div class="line">                <span class="keyword">if</span> (maze[i][j] == <span class="string">'S'</span>)</div><div class="line">                &#123;</div><div class="line">                    start.r = i;</div><div class="line">                    start.c = j;</div><div class="line">                    start.color = <span class="number">0</span>;</div><div class="line">                    start.time = <span class="number">0</span>;</div><div class="line">                    start.d = <span class="number">0</span>;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        Q.push(start);</div><div class="line">        <span class="keyword">int</span> ans = <span class="number">0</span>;</div><div class="line">        <span class="comment">//bfs</span></div><div class="line">        <span class="keyword">int</span> step[<span class="number">4</span>][<span class="number">2</span>] = &#123;&#123;<span class="number">-1</span>, <span class="number">0</span>&#125;, &#123;<span class="number">0</span>, <span class="number">1</span>&#125;, &#123;<span class="number">1</span>, <span class="number">0</span>&#125;, &#123;<span class="number">0</span>, <span class="number">-1</span>&#125;&#125;;</div><div class="line">        <span class="keyword">while</span>(!Q.empty())</div><div class="line">        &#123;</div><div class="line">            Node cur = Q.top();</div><div class="line">            Q.pop();</div><div class="line">            vis[cur.r][cur.c][cur.color][cur.d] = <span class="literal">true</span>;</div><div class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; <span class="number">4</span>;i++)</div><div class="line">            &#123;</div><div class="line">                <span class="keyword">int</span> nr, nc, ncolor, nd, ntime;</div><div class="line">                <span class="keyword">if</span> (cur.d == i)</div><div class="line">                &#123;</div><div class="line">                    ntime = cur.time + <span class="number">1</span>;</div><div class="line">                    nd = i;</div><div class="line">                    nr = cur.r + step[i][<span class="number">0</span>];</div><div class="line">                    nc = cur.c + step[i][<span class="number">1</span>];</div><div class="line">                    ncolor = (cur.color + <span class="number">1</span>)%<span class="number">5</span>;</div><div class="line">                &#125; <span class="keyword">else</span></div><div class="line">                &#123;</div><div class="line">                    <span class="keyword">if</span> (<span class="built_in">abs</span>(i-cur.d) == <span class="number">2</span>)</div><div class="line">                        ntime = cur.time+<span class="number">2</span>;</div><div class="line">                    <span class="keyword">else</span></div><div class="line">                        ntime = cur.time+<span class="number">1</span>;</div><div class="line">                    nd = i;</div><div class="line">                    nr = cur.r;</div><div class="line">                    nc = cur.c;</div><div class="line">                    ncolor = cur.color;</div><div class="line">                &#125;</div><div class="line">                <span class="keyword">if</span> (maze[nr][nc] != <span class="string">'#'</span> &amp;&amp; !vis[nr][nc][ncolor][nd] &amp;&amp; nr &gt;=<span class="number">0</span> &amp;&amp; nr &lt; m &amp;&amp; nc &gt;=<span class="number">0</span> &amp;&amp; nc &lt; n)</div><div class="line">                &#123;</div><div class="line">                    Node next = &#123;nr, nc, ncolor, nd, ntime&#125;;</div><div class="line">                    <span class="keyword">if</span> (maze[nr][nc] == <span class="string">'T'</span> &amp;&amp; ncolor == <span class="number">0</span>)</div><div class="line">                    &#123;</div><div class="line">                            ans = ntime;</div><div class="line">                            <span class="keyword">goto</span> ret;</div><div class="line">                    &#125;</div><div class="line">                    Q.push(next);</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        ret:</div><div class="line">        <span class="keyword">if</span> (kase != <span class="number">1</span>)</div><div class="line">            <span class="built_in">puts</span>(<span class="string">""</span>);</div><div class="line">        <span class="built_in">printf</span>(<span class="string">"Case #%d\n"</span>, kase);</div><div class="line">        kase++;</div><div class="line">        <span class="keyword">if</span> (ans == <span class="number">0</span>)</div><div class="line">            <span class="built_in">printf</span>(<span class="string">"destination not reachable\n"</span>);</div><div class="line">        <span class="keyword">else</span></div><div class="line">            <span class="built_in">printf</span>(<span class="string">"minimum time = %d sec\n"</span>, ans);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>开始没做出来还是对BFS（搜索）认识不深刻，以后还需要多加练习。(。・・)ノ</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/12/07/Codeforces-Round-383-总结/" itemprop="url">
                   Codeforces Round #383 总结
                 </a>
@@ -258,7 +363,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-12-07T16:04:51+08:00" content="2016-12-07">
               2016-12-07
             </time>
@@ -375,7 +480,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-11-28T16:40:28+08:00" content="2016-11-28">
               2016-11-28
             </time>
@@ -485,7 +590,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-11-23T11:23:53+08:00" content="2016-11-23">
               2016-11-23
             </time>
@@ -604,7 +709,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-10-20T10:45:14+08:00" content="2016-10-20">
               2016-10-20
             </time>
@@ -705,7 +810,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-10-13T21:55:49+08:00" content="2016-10-13">
               2016-10-13
             </time>
@@ -717,7 +822,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">In</span>
+              <span class="post-meta-item-text">in</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
                   <a href="/categories/Note/" itemprop="url" rel="index">
@@ -851,7 +956,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-09-06T22:30:54+08:00" content="2016-09-06">
               2016-09-06
             </time>
@@ -863,7 +968,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">In</span>
+              <span class="post-meta-item-text">in</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
                   <a href="/categories/Algorithm/" itemprop="url" rel="index">
@@ -979,7 +1084,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-08-28T15:19:33+08:00" content="2016-08-28">
               2016-08-28
             </time>
@@ -1122,7 +1227,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-08-27T09:49:22+08:00" content="2016-08-27">
               2016-08-27
             </time>
@@ -1248,8 +1353,8 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">8</span>
-              <span class="site-state-item-name">posts</span>
+              <span class="site-state-item-count">9</span>
+              <span class="site-state-item-name">Artikel</span>
             </a>
           </div>
 
@@ -1257,7 +1362,7 @@
             <div class="site-state-item site-state-categories">
               <a href="/categories">
                 <span class="site-state-item-count">2</span>
-                <span class="site-state-item-name">categories</span>
+                <span class="site-state-item-name">Kategorien</span>
               </a>
             </div>
           
@@ -1266,7 +1371,7 @@
             <div class="site-state-item site-state-tags">
               <a href="/tags">
                 <span class="site-state-item-count">5</span>
-                <span class="site-state-item-name">tags</span>
+                <span class="site-state-item-name">Tags</span>
               </a>
             </div>
           
@@ -1310,7 +1415,7 @@
 </div>
 
 <div class="powered-by">
-  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">
