@@ -100,7 +100,7 @@ To left test那么问题就规约（reduction)为了如何判断一个点在一�
 我们知道三角形有">
 <meta property="og:image" content="http://7sbktf.com1.z0.glb.clouddn.com/tri.jpg">
 <meta property="og:image" content="http://7sbktf.com1.z0.glb.clouddn.com/toleft.jpg">
-<meta property="og:updated_time" content="2016-12-14T02:44:32.242Z">
+<meta property="og:updated_time" content="2016-12-14T03:09:45.366Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="In triangle test">
 <meta name="twitter:description" content="问题给定一个三角形三个顶点的坐标，另给一个点的坐标，如何判断这个点在三角形的内部？
@@ -189,7 +189,7 @@ To left test那么问题就规约（reduction)为了如何判断一个点在一�
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Home
+            Startseite
           </a>
         </li>
       
@@ -199,7 +199,7 @@ To left test那么问题就规约（reduction)为了如何判断一个点在一�
             
               <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
             
-            Categories
+            Kategorien
           </a>
         </li>
       
@@ -209,7 +209,7 @@ To left test那么问题就规约（reduction)为了如何判断一个点在一�
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archives
+            Archiv
           </a>
         </li>
       
@@ -272,7 +272,7 @@ To left test那么问题就规约（reduction)为了如何判断一个点在一�
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-12-14T10:18:01+08:00" content="2016-12-14">
               2016-12-14
             </time>
@@ -313,8 +313,9 @@ To left test那么问题就规约（reduction)为了如何判断一个点在一�
 <p>仔细观察，会发现点S在图中所有有向线段的一侧（左侧）。实际上，当且仅当点处在三角形内部时，在所有边构成的有向线段的一侧（有向线段都顺时针或逆时针）。</p>
 <h1 id="To-left-test"><a href="#To-left-test" class="headerlink" title="To left test"></a>To left test</h1><p>那么问题就规约（reduction)为了如何判断一个点在一条有向线段的一侧。这里引入To left test。<br><img src="http://7sbktf.com1.z0.glb.clouddn.com/toleft.jpg" alt=""></p>
 <p>我们知道三角形有向面积的计算公式如下：</p>
-<p>$$<br>    2*Area =<br>        \begin{matrix}<br>          p<em>{x} &amp; p</em>{y} &amp; 1 \<br>          q<em>{x} &amp; q</em>{y} &amp; 1 \<br>          s<em>{x} &amp; s</em>{y} &amp; 1 \<br>        \end{matrix}<br>$$</p>
-<p>我们可以利用三角形有向面积的符号来判定一个点处在一条有向直线的左边还是右边。所以，我们只需要判断一个点与三角形三条边构成的三角形的有向面积的符号是否一致，就可以知道这个点是在三角形内部还是外部了。<br>$$ \begin{pmatrix}<br>     1 &amp; a_1 &amp; a_1^2 &amp; \cdots &amp; a_1^n \<br>     1 &amp; a_2 &amp; a_2^2 &amp; \cdots &amp; a_2^n \<br>     \vdots  &amp; \vdots&amp; \vdots &amp; \ddots &amp; \vdots \<br>     1 &amp; a_m &amp; a_m^2 &amp; \cdots &amp; a_m^n<br>\end{pmatrix} $$</p>
+<p>$$<br>    2*Area =<br>        \left|\begin{matrix}<br>          p_x &amp; p_y &amp; 1 \\<br>          q_x &amp; q_y &amp; 1 \\<br>          s_x &amp; s_y &amp; 1 \\<br>        \end{matrix}\right|<br>$$</p>
+<p>我们可以利用三角形有向面积的符号来判定一个点处在一条有向直线的左边还是右边。所以，我们只需要判断一个点与三角形三条边构成的三角形的有向面积的符号是否一致，就可以知道这个点是在三角形内部还是外部了。</p>
+<p>$$<br>         \left|\begin{matrix}<br>          p_x &amp; p_y &amp; 1 \\<br>          q_x &amp; q_y &amp; 1 \\<br>          s_x &amp; s_y &amp; 1 \\<br>        \end{matrix}\right|=p_x\times q_y-p_y\times q_x+q_x\times s_y-q_y\times s_x+s_x\times p_y-s_y\times p_x<br>$$</p>
 
       
     </div>
@@ -405,10 +406,10 @@ To left test那么问题就规约（reduction)为了如何判断一个点在一�
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            Table of Contents
+            Inhaltsverzeichnis
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
-            Overview
+            Übersicht
           </li>
         </ul>
       
@@ -425,7 +426,7 @@ To left test那么问题就规约（reduction)为了如何判断一个点在一�
           <div class="site-state-item site-state-posts">
             <a href="/archives">
               <span class="site-state-item-count">10</span>
-              <span class="site-state-item-name">posts</span>
+              <span class="site-state-item-name">Artikel</span>
             </a>
           </div>
 
@@ -433,7 +434,7 @@ To left test那么问题就规约（reduction)为了如何判断一个点在一�
             <div class="site-state-item site-state-categories">
               <a href="/categories">
                 <span class="site-state-item-count">2</span>
-                <span class="site-state-item-name">categories</span>
+                <span class="site-state-item-name">Kategorien</span>
               </a>
             </div>
           
@@ -442,7 +443,7 @@ To left test那么问题就规约（reduction)为了如何判断一个点在一�
             <div class="site-state-item site-state-tags">
               <a href="/tags">
                 <span class="site-state-item-count">6</span>
-                <span class="site-state-item-name">tags</span>
+                <span class="site-state-item-name">Tags</span>
               </a>
             </div>
           
@@ -497,7 +498,7 @@ To left test那么问题就规约（reduction)为了如何判断一个点在一�
 </div>
 
 <div class="powered-by">
-  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">
