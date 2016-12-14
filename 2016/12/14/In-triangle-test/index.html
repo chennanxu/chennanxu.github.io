@@ -100,7 +100,7 @@ To left test那么问题就规约（reduction)为了如何判断一个点在一�
 我们知道三角形有">
 <meta property="og:image" content="http://7sbktf.com1.z0.glb.clouddn.com/tri.jpg">
 <meta property="og:image" content="http://7sbktf.com1.z0.glb.clouddn.com/toleft.jpg">
-<meta property="og:updated_time" content="2016-12-14T02:35:00.291Z">
+<meta property="og:updated_time" content="2016-12-14T02:44:32.242Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="In triangle test">
 <meta name="twitter:description" content="问题给定一个三角形三个顶点的坐标，另给一个点的坐标，如何判断这个点在三角形的内部？
@@ -312,7 +312,9 @@ To left test那么问题就规约（reduction)为了如何判断一个点在一�
 <p>如下图所示：<br><img src="http://7sbktf.com1.z0.glb.clouddn.com/tri.jpg" alt=""></p>
 <p>仔细观察，会发现点S在图中所有有向线段的一侧（左侧）。实际上，当且仅当点处在三角形内部时，在所有边构成的有向线段的一侧（有向线段都顺时针或逆时针）。</p>
 <h1 id="To-left-test"><a href="#To-left-test" class="headerlink" title="To left test"></a>To left test</h1><p>那么问题就规约（reduction)为了如何判断一个点在一条有向线段的一侧。这里引入To left test。<br><img src="http://7sbktf.com1.z0.glb.clouddn.com/toleft.jpg" alt=""></p>
-<p>我们知道三角形有向面积的计算公式如下：<br>$$<br> 2<em>Area =  \left|<br>    \begin{array}{ccc}<br>      p<em>{x} &amp; p</em>{y} &amp; 1 \<br>      q<em>{x} &amp; q</em>{y} &amp; 1 \<br>      s<em>{x} &amp; s</em>{y} &amp; 1<br>    \end{array}<br>  \right|<br>$$<br>我们可以利用三角形有向面积的符号来判定一个点处在一条有向直线的左边还是右边。所以，我们只需要判断一个点与三角形三条边构成的三角形的有向面积的符号是否一致，就可以知道这个点是在三角形内部还是外部了。<br>$$ \left|<br>    \begin{array}{ccc}<br>      p<em>{x} &amp; p</em>{y} &amp; 1 \<br>      q<em>{x} &amp; q</em>{y} &amp; 1 \<br>      s<em>{x} &amp; s</em>{y} &amp; 1<br>    \end{array}<br>  \right| = p_x</em>q_y-p_y<em>q_x+q_x</em>s_y-q_y<em>s_x+s_x</em>p_y-s_y*p_x<br>$$ </p>
+<p>我们知道三角形有向面积的计算公式如下：</p>
+<p>$$<br>    2*Area =<br>        \begin{matrix}<br>          p<em>{x} &amp; p</em>{y} &amp; 1 \<br>          q<em>{x} &amp; q</em>{y} &amp; 1 \<br>          s<em>{x} &amp; s</em>{y} &amp; 1 \<br>        \end{matrix}<br>$$</p>
+<p>我们可以利用三角形有向面积的符号来判定一个点处在一条有向直线的左边还是右边。所以，我们只需要判断一个点与三角形三条边构成的三角形的有向面积的符号是否一致，就可以知道这个点是在三角形内部还是外部了。<br>$$ \begin{pmatrix}<br>     1 &amp; a_1 &amp; a_1^2 &amp; \cdots &amp; a_1^n \<br>     1 &amp; a_2 &amp; a_2^2 &amp; \cdots &amp; a_2^n \<br>     \vdots  &amp; \vdots&amp; \vdots &amp; \ddots &amp; \vdots \<br>     1 &amp; a_m &amp; a_m^2 &amp; \cdots &amp; a_m^n<br>\end{pmatrix} $$</p>
 
       
     </div>
