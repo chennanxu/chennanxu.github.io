@@ -172,7 +172,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Startseite
+            Home
           </a>
         </li>
       
@@ -182,7 +182,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
             
-            Kategorien
+            Categories
           </a>
         </li>
       
@@ -192,7 +192,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archiv
+            Archives
           </a>
         </li>
       
@@ -245,6 +245,111 @@
             
               
                 
+                <a class="post-title-link" href="/2016/12/14/In-triangle-test/" itemprop="url">
+                  In triangle test
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posted on</span>
+            <time itemprop="dateCreated" datetime="2016-12-14T10:18:01+08:00" content="2016-12-14">
+              2016-12-14
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/12/14/In-triangle-test/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/14/In-triangle-test/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><p>给定一个三角形三个顶点的坐标，另给一个点的坐标，如何判断这个点在三角形的内部？</p>
+<p>如下图所示：<br><img src="http://7sbktf.com1.z0.glb.clouddn.com/tri.jpg" alt=""></p>
+<p>仔细观察，会发现点S在图中所有有向线段的一侧（左侧）。实际上，当且仅当点处在三角形内部时，在所有边构成的有向线段的一侧（有向线段都顺时针或逆时针）。</p>
+<h1 id="To-left-test"><a href="#To-left-test" class="headerlink" title="To left test"></a>To left test</h1><p>那么问题就规约（reduction)为了如何判断一个点在一条有向线段的一侧。这里引入To left test。<br><img src="http://7sbktf.com1.z0.glb.clouddn.com/toleft.jpg" alt=""></p>
+<p>我们知道三角形有向面积的计算公式如下：<br>$$<br> 2<em>Area =  \left|<br>    \begin{array}{ccc}<br>      p<em>{x} &amp; p</em>{y} &amp; 1 \<br>      q<em>{x} &amp; q</em>{y} &amp; 1 \<br>      s<em>{x} &amp; s</em>{y} &amp; 1<br>    \end{array}<br>  \right|<br>$$<br>我们可以利用三角形有向面积的符号来判定一个点处在一条有向直线的左边还是右边。所以，我们只需要判断一个点与三角形三条边构成的三角形的有向面积的符号是否一致，就可以知道这个点是在三角形内部还是外部了。<br>$$ \left|<br>    \begin{array}{ccc}<br>      p<em>{x} &amp; p</em>{y} &amp; 1 \<br>      q<em>{x} &amp; q</em>{y} &amp; 1 \<br>      s<em>{x} &amp; s</em>{y} &amp; 1<br>    \end{array}<br>  \right| = p_x</em>q_y-p_y<em>q_x+q_x</em>s_y-q_y<em>s_x+s_x</em>p_y-s_y*p_x<br>$$ </p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/12/08/UVA10047-扩展BFS/" itemprop="url">
                   UVA10047-扩展BFS
                 </a>
@@ -258,7 +363,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-12-08T20:51:15+08:00" content="2016-12-08">
               2016-12-08
             </time>
@@ -363,7 +468,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-12-07T16:04:51+08:00" content="2016-12-07">
               2016-12-07
             </time>
@@ -480,7 +585,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-11-28T16:40:28+08:00" content="2016-11-28">
               2016-11-28
             </time>
@@ -590,7 +695,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-11-23T11:23:53+08:00" content="2016-11-23">
               2016-11-23
             </time>
@@ -709,7 +814,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-10-20T10:45:14+08:00" content="2016-10-20">
               2016-10-20
             </time>
@@ -810,7 +915,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-10-13T21:55:49+08:00" content="2016-10-13">
               2016-10-13
             </time>
@@ -822,7 +927,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">in</span>
+              <span class="post-meta-item-text">In</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
                   <a href="/categories/Note/" itemprop="url" rel="index">
@@ -956,7 +1061,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-09-06T22:30:54+08:00" content="2016-09-06">
               2016-09-06
             </time>
@@ -968,7 +1073,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">in</span>
+              <span class="post-meta-item-text">In</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
                   <a href="/categories/Algorithm/" itemprop="url" rel="index">
@@ -1084,7 +1189,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-08-28T15:19:33+08:00" content="2016-08-28">
               2016-08-28
             </time>
@@ -1227,7 +1332,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-08-27T09:49:22+08:00" content="2016-08-27">
               2016-08-27
             </time>
@@ -1353,8 +1458,8 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">9</span>
-              <span class="site-state-item-name">Artikel</span>
+              <span class="site-state-item-count">10</span>
+              <span class="site-state-item-name">posts</span>
             </a>
           </div>
 
@@ -1362,7 +1467,7 @@
             <div class="site-state-item site-state-categories">
               <a href="/categories">
                 <span class="site-state-item-count">2</span>
-                <span class="site-state-item-name">Kategorien</span>
+                <span class="site-state-item-name">categories</span>
               </a>
             </div>
           
@@ -1370,8 +1475,8 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">5</span>
-                <span class="site-state-item-name">Tags</span>
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">tags</span>
               </a>
             </div>
           
@@ -1415,7 +1520,7 @@
 </div>
 
 <div class="powered-by">
-  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">

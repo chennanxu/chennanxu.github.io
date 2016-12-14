@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="计算几何," />
 
 
 
@@ -84,12 +84,31 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="Doolittle">
-<meta property="og:url" content="http://chennanxu.github.io/archives/index.html">
+<meta name="description" content="问题给定一个三角形三个顶点的坐标，另给一个点的坐标，如何判断这个点在三角形的内部？
+如下图所示：
+仔细观察，会发现点S在图中所有有向线段的一侧（左侧）。实际上，当且仅当点处在三角形内部时，在所有边构成的有向线段的一侧（有向线段都顺时针或逆时针）。
+To left test那么问题就规约（reduction)为了如何判断一个点在一条有向线段的一侧。这里引入To left test。
+我们知道三角形有">
+<meta property="og:type" content="article">
+<meta property="og:title" content="In triangle test">
+<meta property="og:url" content="http://chennanxu.github.io/2016/12/14/In-triangle-test/index.html">
 <meta property="og:site_name" content="Doolittle">
+<meta property="og:description" content="问题给定一个三角形三个顶点的坐标，另给一个点的坐标，如何判断这个点在三角形的内部？
+如下图所示：
+仔细观察，会发现点S在图中所有有向线段的一侧（左侧）。实际上，当且仅当点处在三角形内部时，在所有边构成的有向线段的一侧（有向线段都顺时针或逆时针）。
+To left test那么问题就规约（reduction)为了如何判断一个点在一条有向线段的一侧。这里引入To left test。
+我们知道三角形有">
+<meta property="og:image" content="http://7sbktf.com1.z0.glb.clouddn.com/tri.jpg">
+<meta property="og:image" content="http://7sbktf.com1.z0.glb.clouddn.com/toleft.jpg">
+<meta property="og:updated_time" content="2016-12-14T02:35:00.291Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Doolittle">
+<meta name="twitter:title" content="In triangle test">
+<meta name="twitter:description" content="问题给定一个三角形三个顶点的坐标，另给一个点的坐标，如何判断这个点在三角形的内部？
+如下图所示：
+仔细观察，会发现点S在图中所有有向线段的一侧（左侧）。实际上，当且仅当点处在三角形内部时，在所有边构成的有向线段的一侧（有向线段都顺时针或逆时针）。
+To left test那么问题就规约（reduction)为了如何判断一个点在一条有向线段的一侧。这里引入To left test。
+我们知道三角形有">
+<meta name="twitter:image" content="http://7sbktf.com1.z0.glb.clouddn.com/tri.jpg">
 
 
 
@@ -110,9 +129,9 @@
 
 
 
-  <link rel="canonical" href="http://chennanxu.github.io/archives/"/>
+  <link rel="canonical" href="http://chennanxu.github.io/2016/12/14/In-triangle-test/"/>
 
-  <title> Archive | Doolittle </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title> In triangle test | Doolittle </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="">
@@ -133,7 +152,7 @@
     
   
 
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container one-collumn sidebar-position-left  page-archive  ">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -221,399 +240,133 @@
           <div id="content" class="content">
             
 
-  <section id="posts" class="posts-collapse">
-    <span class="archive-move-on"></span>
-
-    <span class="archive-page-counter">
-      
-      
-      
-        
-      
-      Um..! 10 posts in total. Keep on posting.
-    </span>
-
+  <div id="posts" class="posts-expand">
     
-
-      
-      
-      
-
-      
-        
-        <div class="collection-title">
-          <h2 class="archive-year motion-element" id="archive-year-2016">2016</h2>
-        </div>
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2016/12/14/In-triangle-test/" itemprop="url">
-              
-                <span itemprop="name">In triangle test</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-12-14T10:18:01+08:00"
-              content="2016-12-14" >
-          12-14
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2016/12/08/UVA10047-扩展BFS/" itemprop="url">
-              
-                <span itemprop="name">UVA10047-扩展BFS</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-12-08T20:51:15+08:00"
-              content="2016-12-08" >
-          12-08
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2016/12/07/Codeforces-Round-383-总结/" itemprop="url">
-              
-                <span itemprop="name">Codeforces Round #383 总结</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-12-07T16:04:51+08:00"
-              content="2016-12-07" >
-          12-07
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2016/11/28/Ceil函数实现/" itemprop="url">
-              
-                <span itemprop="name">Ceil函数实现</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-11-28T16:40:28+08:00"
-              content="2016-11-28" >
-          11-28
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2016/11/23/字符串最小表示算法/" itemprop="url">
-              
-                <span itemprop="name">字符串最小表示算法</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-11-23T11:23:53+08:00"
-              content="2016-11-23" >
-          11-23
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2016/10/20/爬虫cheet-sheet/" itemprop="url">
-              
-                <span itemprop="name">爬虫cheet sheet</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-10-20T10:45:14+08:00"
-              content="2016-10-20" >
-          10-20
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2016/10/13/MIT6-042-Notes-Induction/" itemprop="url">
-              
-                <span itemprop="name">MIT6.042 Notes Induction</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-10-13T21:55:49+08:00"
-              content="2016-10-13" >
-          10-13
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2016/09/06/Reverse-Linked-List/" itemprop="url">
-              
-                <span itemprop="name">Reverse Linked List</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-09-06T22:30:54+08:00"
-              content="2016-09-06" >
-          09-06
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2016/08/28/MIT-6-042-Notes-1-Proofs/" itemprop="url">
-              
-                <span itemprop="name">MIT 6.042 Notes_1 Proofs</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-08-28T15:19:33+08:00"
-              content="2016-08-28" >
-          08-28
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2016/08/27/hello/" itemprop="url">
-              
-                <span itemprop="name">hello</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-08-27T09:49:22+08:00"
-              content="2016-08-27" >
-          08-27
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-  </section>
 
   
+  
 
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                In triangle test
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posted on</span>
+            <time itemprop="dateCreated" datetime="2016-12-14T10:18:01+08:00" content="2016-12-14">
+              2016-12-14
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/12/14/In-triangle-test/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/14/In-triangle-test/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><p>给定一个三角形三个顶点的坐标，另给一个点的坐标，如何判断这个点在三角形的内部？</p>
+<p>如下图所示：<br><img src="http://7sbktf.com1.z0.glb.clouddn.com/tri.jpg" alt=""></p>
+<p>仔细观察，会发现点S在图中所有有向线段的一侧（左侧）。实际上，当且仅当点处在三角形内部时，在所有边构成的有向线段的一侧（有向线段都顺时针或逆时针）。</p>
+<h1 id="To-left-test"><a href="#To-left-test" class="headerlink" title="To left test"></a>To left test</h1><p>那么问题就规约（reduction)为了如何判断一个点在一条有向线段的一侧。这里引入To left test。<br><img src="http://7sbktf.com1.z0.glb.clouddn.com/toleft.jpg" alt=""></p>
+<p>我们知道三角形有向面积的计算公式如下：<br>$$<br> 2<em>Area =  \left|<br>    \begin{array}{ccc}<br>      p<em>{x} &amp; p</em>{y} &amp; 1 \<br>      q<em>{x} &amp; q</em>{y} &amp; 1 \<br>      s<em>{x} &amp; s</em>{y} &amp; 1<br>    \end{array}<br>  \right|<br>$$<br>我们可以利用三角形有向面积的符号来判定一个点处在一条有向直线的左边还是右边。所以，我们只需要判断一个点与三角形三条边构成的三角形的有向面积的符号是否一致，就可以知道这个点是在三角形内部还是外部了。<br>$$ \left|<br>    \begin{array}{ccc}<br>      p<em>{x} &amp; p</em>{y} &amp; 1 \<br>      q<em>{x} &amp; q</em>{y} &amp; 1 \<br>      s<em>{x} &amp; s</em>{y} &amp; 1<br>    \end{array}<br>  \right| = p_x</em>q_y-p_y<em>q_x+q_x</em>s_y-q_y<em>s_x+s_x</em>p_y-s_y*p_x<br>$$ </p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/计算几何/" rel="tag">#计算几何</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/12/08/UVA10047-扩展BFS/" rel="next" title="UVA10047-扩展BFS">
+                <i class="fa fa-chevron-left"></i> UVA10047-扩展BFS
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -621,6 +374,14 @@
 
 
           
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/12/14/In-triangle-test/"
+           data-title="In triangle test" data-url="http://chennanxu.github.io/2016/12/14/In-triangle-test/">
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -640,8 +401,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/uploads/avatar.png"
@@ -691,6 +461,17 @@
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#问题"><span class="nav-number">1.</span> <span class="nav-text">问题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#To-left-test"><span class="nav-number">2.</span> <span class="nav-text">To left test</span></a></li></ol></div>
+            
+          </div>
+        </section>
       
 
     </div>
@@ -787,11 +568,9 @@
   
 
   
-  
-    <script type="text/javascript" id="motion.page.archive">
-      $('.archive-year').velocity('transition.slideLeftIn');
-    </script>
-  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
 
 
   
