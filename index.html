@@ -172,7 +172,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Startseite
+            Home
           </a>
         </li>
       
@@ -182,7 +182,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
             
-            Kategorien
+            Categories
           </a>
         </li>
       
@@ -192,7 +192,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archiv
+            Archives
           </a>
         </li>
       
@@ -245,6 +245,115 @@
             
               
                 
+                <a class="post-title-link" href="/2016/12/15/Codeforces-Round-384-Div-2-WriteUp/" itemprop="url">
+                  Codeforces Round #384 (Div. 2) WriteUp
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posted on</span>
+            <time itemprop="dateCreated" datetime="2016-12-15T20:12:56+08:00" content="2016-12-15">
+              2016-12-15
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/12/15/Codeforces-Round-384-Div-2-WriteUp/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/15/Codeforces-Round-384-Div-2-WriteUp/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="概览"><a href="#概览" class="headerlink" title="概览"></a>概览</h1><p>一共5道题，历时2个小时，一共做出两道题，再加上总司翻车，真是不幸的一天（<del>垃圾游戏，毁我青春</del>)。</p>
+<h1 id="743A-Vladik-and-flights"><a href="#743A-Vladik-and-flights" class="headerlink" title="743A Vladik and flights"></a><a href="http://codeforces.com/contest/743/problem/A" target="_blank" rel="external">743A Vladik and flights</a></h1><p>从这道题就能看出这套题的整体风格了，就是取巧。。。题目中有两种机场，那么我们知道当两个地方的机场属于同一个公司时，花费是0.那么我们只需要考虑不是同一个公司的情况。当不是同一个公司时，花费的下界是1。而采用一种策略，那么上界也是1。也就是当不属于同一个公司时，花费为1。策略就是，如果不在同一个公司，那么就朝着目标方向迁移，直到遇到目的地一样的公司或者到达目的地。哈。。。<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">int</span> n, a, b;</div><div class="line">    <span class="built_in">cin</span> &gt;&gt; n &gt;&gt; a &gt;&gt; b;</div><div class="line">    <span class="built_in">string</span> s;</div><div class="line">    <span class="built_in">cin</span> &gt;&gt; s;</div><div class="line">    <span class="keyword">if</span> (s[a<span class="number">-1</span>] == s[b<span class="number">-1</span>])</div><div class="line">        <span class="built_in">cout</span> &lt;&lt; <span class="number">0</span>;</div><div class="line">    <span class="keyword">else</span></div><div class="line">        <span class="built_in">cout</span> &lt;&lt; <span class="number">1</span>;</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h1 id="743B-Chloe-and-the-sequence"><a href="#743B-Chloe-and-the-sequence" class="headerlink" title="743B Chloe and the sequence"></a><a href="http://codeforces.com/contest/743/problem/B" target="_blank" rel="external">743B Chloe and the sequence</a></h1><p>仔细观察生成的序列，发现是对称的（废话），那么自然想到折半的方法，中心点就是每次新加入的数。那么什么时候停止呢。我们发现，位置是二的幂次的数我们是能确认他的值的，他的值就是幂次加1。比如4所在位置就是8，也即2的三次方。<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;math.h&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">long</span> <span class="keyword">long</span> n, k;</div><div class="line">    <span class="built_in">cin</span> &gt;&gt; n &gt;&gt; k;</div><div class="line">    <span class="keyword">long</span> <span class="keyword">long</span> ans = <span class="number">1</span>;</div><div class="line">    <span class="keyword">while</span> (n--)</div><div class="line">    &#123;</div><div class="line">        <span class="keyword">if</span>(k &gt; <span class="built_in">pow</span>(<span class="number">2</span>, n))</div><div class="line">            k = <span class="built_in">pow</span>(<span class="number">2</span>,n)*<span class="number">2</span> - k;</div><div class="line">        <span class="keyword">if</span> (k == <span class="built_in">pow</span>(<span class="number">2</span>, n))</div><div class="line">        &#123;</div><div class="line">            ans = n+<span class="number">1</span>;</div><div class="line">            <span class="keyword">break</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">cout</span> &lt;&lt; ans &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>提交了三次才过，被自己蠢哭。<br><img src="http://images.madanqq.com/20160909/20160909165843.jpg" alt=""></p>
+<h1 id="743C-Vladik-and-fractions"><a href="#743C-Vladik-and-fractions" class="headerlink" title="743C Vladik and fractions"></a><a href="http://codeforces.com/contest/743/problem/C" target="_blank" rel="external">743C Vladik and fractions</a></h1><p>一道数论题？开始想了一些可能，也想到因数分解什么的，后来发现我想多了。<br>$$ \frac2n = \frac1n + \frac1n$$<br>首先可以像上面这样分解一次，我们就找到了第一个数（n)，接下来就是考虑怎么把$\frac1n$分解开了。<br>$$ \frac1n = \frac1{n+1} + \frac1{n(n+1)}$$<br>所以我们只需要输出,n 、n+1和n(n+1)就可以了。<br>桥豆麻袋。有一种情况无法分解，那就是n为1的情况。因为这么分解能得到的最大值为$ 1+\frac12+\frac13 = \frac53 &lt; 2$。<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">int</span> n;</div><div class="line">    <span class="built_in">cin</span> &gt;&gt; n;</div><div class="line">    <span class="keyword">if</span> (n == <span class="number">1</span>)</div><div class="line">        <span class="built_in">cout</span> &lt;&lt; <span class="number">-1</span> &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">    <span class="keyword">else</span></div><div class="line">        <span class="built_in">cout</span> &lt;&lt; n &lt;&lt; <span class="string">" "</span> &lt;&lt; n+<span class="number">1</span> &lt;&lt; <span class="string">" "</span> &lt;&lt; n*(n+<span class="number">1</span>) &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>这一定是A题吧。吧？</p>
+<h1 id="743D-Chloe-and-pleasant-prizes"><a href="#743D-Chloe-and-pleasant-prizes" class="headerlink" title="743D Chloe and pleasant prizes"></a><a href="http://codeforces.com/contest/743/problem/D" target="_blank" rel="external">743D Chloe and pleasant prizes</a></h1><p>图论加DP。<br>我们先来考虑不可能的情况。无法得到一种分配方案，当且仅当树没有分支的时候。因为只要有分支，我们总可以取这两个分支。这里维护两个数组。一个保存每个节点及其所有子节点的分数和，另个数组保存每个节点的子树中的最大分数。做一次DFS，每次找出节点的所有子树种分数最大的两个，如果找不出两个，则说明不存在合法的分配。<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> pb push_back</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> mp make_pair</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> mod 1000000007</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> pi 3.1415926535897932384626</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> LMAX 9223372036854775807</span></div><div class="line"><span class="keyword">typedef</span>  <span class="keyword">long</span> <span class="keyword">long</span> ll;</div><div class="line"><span class="keyword">const</span> ll inf=<span class="number">1L</span>L&lt;&lt;<span class="number">60</span>;</div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> fi first</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> sec second</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> pii pair<span class="meta-string">&lt;int, int&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> vi vector<span class="meta-string">&lt;int&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> vl vector<span class="meta-string">&lt;long long&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> vp vector<span class="meta-string">&lt;pair&lt;int, int&gt;</span> &gt;</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> FF fflush(stdout);</span></div><div class="line"></div><div class="line">ll a[<span class="number">200001</span>], m[<span class="number">200001</span>], sums[<span class="number">200001</span>];</div><div class="line">ll ans = -inf;</div><div class="line"><span class="built_in">vector</span>&lt;ll&gt; g[<span class="number">200001</span>];</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(ll r, ll pa)</span></span></div><div class="line">&#123;</div><div class="line">    sums[r] = a[r];</div><div class="line">    ll m1 = -inf, m2 = -inf;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; g[r].size();i++)</div><div class="line">    &#123;</div><div class="line">        ll to = g[r][i];</div><div class="line">        <span class="keyword">if</span> (to == pa)</div><div class="line">            <span class="keyword">continue</span>;</div><div class="line">        dfs(to , r);</div><div class="line">        sums[r] += sums[to];</div><div class="line">        ll x = m[to];</div><div class="line">        <span class="keyword">if</span> (x &gt; m1) swap(x, m1);</div><div class="line">        <span class="keyword">if</span> (x &gt; m2) swap(x, m2);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span> (m1 != -inf &amp;&amp; m2 != -inf)</div><div class="line">        ans = max(ans, m1+m2);</div><div class="line">    m[r] = (sums[r] &gt; m1) ? sums[r] : m1;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">int</span> n;</div><div class="line">    ios::sync_with_stdio(<span class="literal">false</span>);<span class="built_in">cin</span>.tie(<span class="literal">false</span>);</div><div class="line">    <span class="built_in">cin</span> &gt;&gt; n;</div><div class="line">    <span class="keyword">for</span> (ll i = <span class="number">1</span>;i &lt;= n;i++)</div><div class="line">        <span class="built_in">cin</span> &gt;&gt; a[i];</div><div class="line">    <span class="keyword">for</span> (ll i = <span class="number">1</span>;i &lt; n;i++)</div><div class="line">    &#123;</div><div class="line">        ll x, y;</div><div class="line">        <span class="built_in">cin</span> &gt;&gt; x &gt;&gt; y;</div><div class="line">        g[x].pb(y);</div><div class="line">        g[y].pb(x);</div><div class="line">    &#125;</div><div class="line">    dfs(<span class="number">1</span>, <span class="number">0</span>);</div><div class="line">    <span class="keyword">if</span> (ans &gt; -inf)</div><div class="line">        <span class="built_in">cout</span> &lt;&lt; ans &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">    <span class="keyword">else</span></div><div class="line">        <span class="built_in">cout</span> &lt;&lt; <span class="string">"Impossible"</span> &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>参考答案是做两趟DFS，但其实只需要一趟。</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>分数下降到了1389T_T，还是太菜。这次题目的代码量都比较小，只要想清楚了解法，都能很快写出代码。所以主要还在于思考，也没有用到复杂的数据结构和算法。还是太菜了。。。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/12/14/In-triangle-test/" itemprop="url">
                   In triangle test
                 </a>
@@ -258,7 +367,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-12-14T10:18:01+08:00" content="2016-12-14">
               2016-12-14
             </time>
@@ -366,7 +475,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-12-08T20:51:15+08:00" content="2016-12-08">
               2016-12-08
             </time>
@@ -471,7 +580,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-12-07T16:04:51+08:00" content="2016-12-07">
               2016-12-07
             </time>
@@ -588,7 +697,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-11-28T16:40:28+08:00" content="2016-11-28">
               2016-11-28
             </time>
@@ -698,7 +807,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-11-23T11:23:53+08:00" content="2016-11-23">
               2016-11-23
             </time>
@@ -817,7 +926,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-10-20T10:45:14+08:00" content="2016-10-20">
               2016-10-20
             </time>
@@ -918,7 +1027,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-10-13T21:55:49+08:00" content="2016-10-13">
               2016-10-13
             </time>
@@ -930,7 +1039,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">in</span>
+              <span class="post-meta-item-text">In</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
                   <a href="/categories/Note/" itemprop="url" rel="index">
@@ -1064,7 +1173,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-09-06T22:30:54+08:00" content="2016-09-06">
               2016-09-06
             </time>
@@ -1076,7 +1185,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">in</span>
+              <span class="post-meta-item-text">In</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
                   <a href="/categories/Algorithm/" itemprop="url" rel="index">
@@ -1192,7 +1301,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-08-28T15:19:33+08:00" content="2016-08-28">
               2016-08-28
             </time>
@@ -1301,128 +1410,13 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/08/27/hello/" itemprop="url">
-                  hello
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
-            <time itemprop="dateCreated" datetime="2016-08-27T09:49:22+08:00" content="2016-08-27">
-              2016-08-27
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/08/27/hello/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/27/hello/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>还有几天就要开始研究生学习了。大学四年可以说是浑浑噩噩地度过的，虽然最后拿到了所谓的优秀毕业生，但是回想起来几乎是浪费了四年的大好时光。</p>
-<p>前些天躺在床上，想了以后的事情。时不我待，研究生毕业也不过是转瞬。我不希望在研究生毕业时还有遗憾，<strong>至少这次让我全力以赴</strong>。</p>
-<p>所以开了这个博客，记录自己的学习心得，也当一个鞭策。</p>
-<p>接下来半年，计划是：</p>
-<p>1、补习数据结构，把《数据结构C语言实现》过一遍(2m)。TCPL看一遍（1m)。刷POJ。</p>
-<p>2、学习Web开发</p>
-<p>3、把CMU的CSAPP课程看完。</p>
-<p>4、刷完<a href="http://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-006-introduction-to-algorithms-fall-2011/（逃票预定）这个课看了下真心Nice，大名鼎鼎的MIT的算法导论（神课），" target="_blank" rel="external">http://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-006-introduction-to-algorithms-fall-2011/（逃票预定）这个课看了下真心Nice，大名鼎鼎的MIT的算法导论（神课），</a><br>不过先修要求是离散数学，好吧，待我先去补一下离散。</p>
-<p>不知道这次能不能完成呢。待这学期结束后见分晓把。</p>
-<hr>
-<p>测试一下数学公式：$y=ax+b$</p>
-<p>一系列点 $(x_i,y_i)(i=1,2,…n,n\ge 3)$</p>
-<hr>
-<p>以后博客会涉及领域：</p>
-<p>数据结构及算法学习，《算导》暂时不准备看，如果看的话也会写算法分析相关的</p>
-<p>机器学习、深度学习（如果有时间的话）</p>
-<p>复杂网络，链路预测（我读研期间搞的东西）</p>
-<p>各种读书笔记，学习笔记</p>
-<p>Web开发相关（跳票预定）</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+  </nav>
+
 
 
           </div>
@@ -1461,8 +1455,8 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">10</span>
-              <span class="site-state-item-name">Artikel</span>
+              <span class="site-state-item-count">11</span>
+              <span class="site-state-item-name">posts</span>
             </a>
           </div>
 
@@ -1470,7 +1464,7 @@
             <div class="site-state-item site-state-categories">
               <a href="/categories">
                 <span class="site-state-item-count">2</span>
-                <span class="site-state-item-name">Kategorien</span>
+                <span class="site-state-item-name">categories</span>
               </a>
             </div>
           
@@ -1479,7 +1473,7 @@
             <div class="site-state-item site-state-tags">
               <a href="/tags">
                 <span class="site-state-item-count">6</span>
-                <span class="site-state-item-name">Tags</span>
+                <span class="site-state-item-name">tags</span>
               </a>
             </div>
           
@@ -1523,7 +1517,7 @@
 </div>
 
 <div class="powered-by">
-  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">

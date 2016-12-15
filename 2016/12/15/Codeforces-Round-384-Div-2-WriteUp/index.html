@@ -1,0 +1,637 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="algorithm," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="概览一共5道题，历时2个小时，一共做出两道题，再加上总司翻车，真是不幸的一天（垃圾游戏，毁我青春)。
+743A Vladik and flights从这道题就能看出这套题的整体风格了，就是取巧。。。题目中有两种机场，那么我们知道当两个地方的机场属于同一个公司时，花费是0.那么我们只需要考虑不是同一个公司的情况。当不是同一个公司时，花费的下界是1。而采用一种策略，那么上界也是1。也就是当不属于同一个">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Codeforces Round #384 (Div. 2) WriteUp">
+<meta property="og:url" content="http://chennanxu.github.io/2016/12/15/Codeforces-Round-384-Div-2-WriteUp/index.html">
+<meta property="og:site_name" content="Doolittle">
+<meta property="og:description" content="概览一共5道题，历时2个小时，一共做出两道题，再加上总司翻车，真是不幸的一天（垃圾游戏，毁我青春)。
+743A Vladik and flights从这道题就能看出这套题的整体风格了，就是取巧。。。题目中有两种机场，那么我们知道当两个地方的机场属于同一个公司时，花费是0.那么我们只需要考虑不是同一个公司的情况。当不是同一个公司时，花费的下界是1。而采用一种策略，那么上界也是1。也就是当不属于同一个">
+<meta property="og:image" content="http://images.madanqq.com/20160909/20160909165843.jpg">
+<meta property="og:updated_time" content="2016-12-15T12:13:30.264Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Codeforces Round #384 (Div. 2) WriteUp">
+<meta name="twitter:description" content="概览一共5道题，历时2个小时，一共做出两道题，再加上总司翻车，真是不幸的一天（垃圾游戏，毁我青春)。
+743A Vladik and flights从这道题就能看出这套题的整体风格了，就是取巧。。。题目中有两种机场，那么我们知道当两个地方的机场属于同一个公司时，花费是0.那么我们只需要考虑不是同一个公司的情况。当不是同一个公司时，花费的下界是1。而采用一种策略，那么上界也是1。也就是当不属于同一个">
+<meta name="twitter:image" content="http://images.madanqq.com/20160909/20160909165843.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: 'Author'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://chennanxu.github.io/2016/12/15/Codeforces-Round-384-Div-2-WriteUp/"/>
+
+  <title> Codeforces Round #384 (Div. 2) WriteUp | Doolittle </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Doolittle</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Codeforces Round #384 (Div. 2) WriteUp
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posted on</span>
+            <time itemprop="dateCreated" datetime="2016-12-15T20:12:56+08:00" content="2016-12-15">
+              2016-12-15
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/12/15/Codeforces-Round-384-Div-2-WriteUp/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/15/Codeforces-Round-384-Div-2-WriteUp/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="概览"><a href="#概览" class="headerlink" title="概览"></a>概览</h1><p>一共5道题，历时2个小时，一共做出两道题，再加上总司翻车，真是不幸的一天（<del>垃圾游戏，毁我青春</del>)。</p>
+<h1 id="743A-Vladik-and-flights"><a href="#743A-Vladik-and-flights" class="headerlink" title="743A Vladik and flights"></a><a href="http://codeforces.com/contest/743/problem/A" target="_blank" rel="external">743A Vladik and flights</a></h1><p>从这道题就能看出这套题的整体风格了，就是取巧。。。题目中有两种机场，那么我们知道当两个地方的机场属于同一个公司时，花费是0.那么我们只需要考虑不是同一个公司的情况。当不是同一个公司时，花费的下界是1。而采用一种策略，那么上界也是1。也就是当不属于同一个公司时，花费为1。策略就是，如果不在同一个公司，那么就朝着目标方向迁移，直到遇到目的地一样的公司或者到达目的地。哈。。。<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">int</span> n, a, b;</div><div class="line">    <span class="built_in">cin</span> &gt;&gt; n &gt;&gt; a &gt;&gt; b;</div><div class="line">    <span class="built_in">string</span> s;</div><div class="line">    <span class="built_in">cin</span> &gt;&gt; s;</div><div class="line">    <span class="keyword">if</span> (s[a<span class="number">-1</span>] == s[b<span class="number">-1</span>])</div><div class="line">        <span class="built_in">cout</span> &lt;&lt; <span class="number">0</span>;</div><div class="line">    <span class="keyword">else</span></div><div class="line">        <span class="built_in">cout</span> &lt;&lt; <span class="number">1</span>;</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h1 id="743B-Chloe-and-the-sequence"><a href="#743B-Chloe-and-the-sequence" class="headerlink" title="743B Chloe and the sequence"></a><a href="http://codeforces.com/contest/743/problem/B" target="_blank" rel="external">743B Chloe and the sequence</a></h1><p>仔细观察生成的序列，发现是对称的（废话），那么自然想到折半的方法，中心点就是每次新加入的数。那么什么时候停止呢。我们发现，位置是二的幂次的数我们是能确认他的值的，他的值就是幂次加1。比如4所在位置就是8，也即2的三次方。<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;math.h&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">long</span> <span class="keyword">long</span> n, k;</div><div class="line">    <span class="built_in">cin</span> &gt;&gt; n &gt;&gt; k;</div><div class="line">    <span class="keyword">long</span> <span class="keyword">long</span> ans = <span class="number">1</span>;</div><div class="line">    <span class="keyword">while</span> (n--)</div><div class="line">    &#123;</div><div class="line">        <span class="keyword">if</span>(k &gt; <span class="built_in">pow</span>(<span class="number">2</span>, n))</div><div class="line">            k = <span class="built_in">pow</span>(<span class="number">2</span>,n)*<span class="number">2</span> - k;</div><div class="line">        <span class="keyword">if</span> (k == <span class="built_in">pow</span>(<span class="number">2</span>, n))</div><div class="line">        &#123;</div><div class="line">            ans = n+<span class="number">1</span>;</div><div class="line">            <span class="keyword">break</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">cout</span> &lt;&lt; ans &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>提交了三次才过，被自己蠢哭。<br><img src="http://images.madanqq.com/20160909/20160909165843.jpg" alt=""></p>
+<h1 id="743C-Vladik-and-fractions"><a href="#743C-Vladik-and-fractions" class="headerlink" title="743C Vladik and fractions"></a><a href="http://codeforces.com/contest/743/problem/C" target="_blank" rel="external">743C Vladik and fractions</a></h1><p>一道数论题？开始想了一些可能，也想到因数分解什么的，后来发现我想多了。<br>$$ \frac2n = \frac1n + \frac1n$$<br>首先可以像上面这样分解一次，我们就找到了第一个数（n)，接下来就是考虑怎么把$\frac1n$分解开了。<br>$$ \frac1n = \frac1{n+1} + \frac1{n(n+1)}$$<br>所以我们只需要输出,n 、n+1和n(n+1)就可以了。<br>桥豆麻袋。有一种情况无法分解，那就是n为1的情况。因为这么分解能得到的最大值为$ 1+\frac12+\frac13 = \frac53 &lt; 2$。<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">int</span> n;</div><div class="line">    <span class="built_in">cin</span> &gt;&gt; n;</div><div class="line">    <span class="keyword">if</span> (n == <span class="number">1</span>)</div><div class="line">        <span class="built_in">cout</span> &lt;&lt; <span class="number">-1</span> &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">    <span class="keyword">else</span></div><div class="line">        <span class="built_in">cout</span> &lt;&lt; n &lt;&lt; <span class="string">" "</span> &lt;&lt; n+<span class="number">1</span> &lt;&lt; <span class="string">" "</span> &lt;&lt; n*(n+<span class="number">1</span>) &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>这一定是A题吧。吧？</p>
+<h1 id="743D-Chloe-and-pleasant-prizes"><a href="#743D-Chloe-and-pleasant-prizes" class="headerlink" title="743D Chloe and pleasant prizes"></a><a href="http://codeforces.com/contest/743/problem/D" target="_blank" rel="external">743D Chloe and pleasant prizes</a></h1><p>图论加DP。<br>我们先来考虑不可能的情况。无法得到一种分配方案，当且仅当树没有分支的时候。因为只要有分支，我们总可以取这两个分支。这里维护两个数组。一个保存每个节点及其所有子节点的分数和，另个数组保存每个节点的子树中的最大分数。做一次DFS，每次找出节点的所有子树种分数最大的两个，如果找不出两个，则说明不存在合法的分配。<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> pb push_back</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> mp make_pair</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> mod 1000000007</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> pi 3.1415926535897932384626</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> LMAX 9223372036854775807</span></div><div class="line"><span class="keyword">typedef</span>  <span class="keyword">long</span> <span class="keyword">long</span> ll;</div><div class="line"><span class="keyword">const</span> ll inf=<span class="number">1L</span>L&lt;&lt;<span class="number">60</span>;</div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> fi first</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> sec second</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> pii pair<span class="meta-string">&lt;int, int&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> vi vector<span class="meta-string">&lt;int&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> vl vector<span class="meta-string">&lt;long long&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> vp vector<span class="meta-string">&lt;pair&lt;int, int&gt;</span> &gt;</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> FF fflush(stdout);</span></div><div class="line"></div><div class="line">ll a[<span class="number">200001</span>], m[<span class="number">200001</span>], sums[<span class="number">200001</span>];</div><div class="line">ll ans = -inf;</div><div class="line"><span class="built_in">vector</span>&lt;ll&gt; g[<span class="number">200001</span>];</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(ll r, ll pa)</span></span></div><div class="line">&#123;</div><div class="line">    sums[r] = a[r];</div><div class="line">    ll m1 = -inf, m2 = -inf;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; g[r].size();i++)</div><div class="line">    &#123;</div><div class="line">        ll to = g[r][i];</div><div class="line">        <span class="keyword">if</span> (to == pa)</div><div class="line">            <span class="keyword">continue</span>;</div><div class="line">        dfs(to , r);</div><div class="line">        sums[r] += sums[to];</div><div class="line">        ll x = m[to];</div><div class="line">        <span class="keyword">if</span> (x &gt; m1) swap(x, m1);</div><div class="line">        <span class="keyword">if</span> (x &gt; m2) swap(x, m2);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span> (m1 != -inf &amp;&amp; m2 != -inf)</div><div class="line">        ans = max(ans, m1+m2);</div><div class="line">    m[r] = (sums[r] &gt; m1) ? sums[r] : m1;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">int</span> n;</div><div class="line">    ios::sync_with_stdio(<span class="literal">false</span>);<span class="built_in">cin</span>.tie(<span class="literal">false</span>);</div><div class="line">    <span class="built_in">cin</span> &gt;&gt; n;</div><div class="line">    <span class="keyword">for</span> (ll i = <span class="number">1</span>;i &lt;= n;i++)</div><div class="line">        <span class="built_in">cin</span> &gt;&gt; a[i];</div><div class="line">    <span class="keyword">for</span> (ll i = <span class="number">1</span>;i &lt; n;i++)</div><div class="line">    &#123;</div><div class="line">        ll x, y;</div><div class="line">        <span class="built_in">cin</span> &gt;&gt; x &gt;&gt; y;</div><div class="line">        g[x].pb(y);</div><div class="line">        g[y].pb(x);</div><div class="line">    &#125;</div><div class="line">    dfs(<span class="number">1</span>, <span class="number">0</span>);</div><div class="line">    <span class="keyword">if</span> (ans &gt; -inf)</div><div class="line">        <span class="built_in">cout</span> &lt;&lt; ans &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">    <span class="keyword">else</span></div><div class="line">        <span class="built_in">cout</span> &lt;&lt; <span class="string">"Impossible"</span> &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>参考答案是做两趟DFS，但其实只需要一趟。</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>分数下降到了1389T_T，还是太菜。这次题目的代码量都比较小，只要想清楚了解法，都能很快写出代码。所以主要还在于思考，也没有用到复杂的数据结构和算法。还是太菜了。。。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/algorithm/" rel="tag">#algorithm</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/12/14/In-triangle-test/" rel="next" title="In triangle test">
+                <i class="fa fa-chevron-left"></i> In triangle test
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/12/15/Codeforces-Round-384-Div-2-WriteUp/"
+           data-title="Codeforces Round #384 (Div. 2) WriteUp" data-url="http://chennanxu.github.io/2016/12/15/Codeforces-Round-384-Div-2-WriteUp/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.png"
+               alt="ChenNanxu" />
+          <p class="site-author-name" itemprop="name">ChenNanxu</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">11</span>
+              <span class="site-state-item-name">posts</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#概览"><span class="nav-number">1.</span> <span class="nav-text">概览</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#743A-Vladik-and-flights"><span class="nav-number">2.</span> <span class="nav-text">743A Vladik and flights</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#743B-Chloe-and-the-sequence"><span class="nav-number">3.</span> <span class="nav-text">743B Chloe and the sequence</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#743C-Vladik-and-fractions"><span class="nav-number">4.</span> <span class="nav-text">743C Vladik and fractions</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#743D-Chloe-and-pleasant-prizes"><span class="nav-number">5.</span> <span class="nav-text">743D Chloe and pleasant prizes</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">6.</span> <span class="nav-text">总结</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ChenNanxu</span>
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"chennanxu1999"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    <script src="/vendors/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+  
+  
+
+  
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+  </script>
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for (i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  </script>
+  <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+  
+
+  
+
+</body>
+</html>
