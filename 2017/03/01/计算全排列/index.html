@@ -84,25 +84,16 @@
 
 
 
-<meta name="description" content="Introductio下取整函数，或高斯函数，记作$\lfloor x \rfloor$，表示不超过$x$的最大整数。
-上取整函数，记作$\lceil x \rceil$,表示不小于$x$的整数中最小的那个。
-易得如下性质$$-\lfloor -x \rfloor = \lceil x \rceil$$ 
-Python approachpython2中默认的整数除法是向下取整，根据以上性质，可以直">
+<meta name="description" content="12345678910111213141516171819202122232425262728293031323334353637383940#include&amp;lt;bits/stdc++.h&amp;gt;using namespace std;bool next_permutation(int a[], int s, int e)&amp;#123;    if (s == e)        return">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Ceil函数实现">
-<meta property="og:url" content="http://chennanxu.github.io/2016/11/28/Ceil函数实现/index.html">
+<meta property="og:title" content="计算全排列">
+<meta property="og:url" content="http://chennanxu.github.io/2017/03/01/计算全排列/index.html">
 <meta property="og:site_name" content="Doolittle">
-<meta property="og:description" content="Introductio下取整函数，或高斯函数，记作$\lfloor x \rfloor$，表示不超过$x$的最大整数。
-上取整函数，记作$\lceil x \rceil$,表示不小于$x$的整数中最小的那个。
-易得如下性质$$-\lfloor -x \rfloor = \lceil x \rceil$$ 
-Python approachpython2中默认的整数除法是向下取整，根据以上性质，可以直">
-<meta property="og:updated_time" content="2016-11-28T08:48:43.654Z">
+<meta property="og:description" content="12345678910111213141516171819202122232425262728293031323334353637383940#include&amp;lt;bits/stdc++.h&amp;gt;using namespace std;bool next_permutation(int a[], int s, int e)&amp;#123;    if (s == e)        return">
+<meta property="og:updated_time" content="2017-03-01T12:24:52.959Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Ceil函数实现">
-<meta name="twitter:description" content="Introductio下取整函数，或高斯函数，记作$\lfloor x \rfloor$，表示不超过$x$的最大整数。
-上取整函数，记作$\lceil x \rceil$,表示不小于$x$的整数中最小的那个。
-易得如下性质$$-\lfloor -x \rfloor = \lceil x \rceil$$ 
-Python approachpython2中默认的整数除法是向下取整，根据以上性质，可以直">
+<meta name="twitter:title" content="计算全排列">
+<meta name="twitter:description" content="12345678910111213141516171819202122232425262728293031323334353637383940#include&amp;lt;bits/stdc++.h&amp;gt;using namespace std;bool next_permutation(int a[], int s, int e)&amp;#123;    if (s == e)        return">
 
 
 
@@ -123,9 +114,9 @@ Python approachpython2中默认的整数除法是向下取整，根据以上性�
 
 
 
-  <link rel="canonical" href="http://chennanxu.github.io/2016/11/28/Ceil函数实现/"/>
+  <link rel="canonical" href="http://chennanxu.github.io/2017/03/01/计算全排列/"/>
 
-  <title> Ceil函数实现 | Doolittle </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title> 计算全排列 | Doolittle </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="">
@@ -255,7 +246,7 @@ Python approachpython2中默认的整数除法是向下取整，根据以上性�
             
             
               
-                Ceil函数实现
+                计算全排列
               
             
           </h1>
@@ -267,8 +258,8 @@ Python approachpython2中默认的整数除法是向下取整，根据以上性�
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">Posted on</span>
-            <time itemprop="dateCreated" datetime="2016-11-28T16:40:28+08:00" content="2016-11-28">
-              2016-11-28
+            <time itemprop="dateCreated" datetime="2017-03-01T20:23:30+08:00" content="2017-03-01">
+              2017-03-01
             </time>
           </span>
 
@@ -278,8 +269,8 @@ Python approachpython2中默认的整数除法是向下取整，根据以上性�
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/11/28/Ceil函数实现/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/28/Ceil函数实现/" itemprop="commentsCount"></span>
+                <a href="/2017/03/01/计算全排列/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/01/计算全排列/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -302,17 +293,7 @@ Python approachpython2中默认的整数除法是向下取整，根据以上性�
       
 
       
-        <h1 id="Introductio"><a href="#Introductio" class="headerlink" title="Introductio"></a>Introductio</h1><p>下取整函数，或高斯函数，记作$\lfloor x \rfloor$，表示不超过$x$的最大整数。</p>
-<p>上取整函数，记作$\lceil x \rceil$,表示不小于$x$的整数中最小的那个。</p>
-<p>易得如下性质$$-\lfloor -x \rfloor = \lceil x \rceil$$ </p>
-<h1 id="Python-approach"><a href="#Python-approach" class="headerlink" title="Python approach"></a>Python approach</h1><p>python2中默认的整数除法是向下取整，根据以上性质，可以直接转化成代码：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">ceil</span><span class="params">(op1, op2)</span>:</span></div><div class="line">    <span class="keyword">return</span> -(-op1/op2)</div></pre></td></tr></table></figure>
-<h1 id="C-C-approach"><a href="#C-C-approach" class="headerlink" title="C/C++ approach"></a>C/C++ approach</h1><p>C++中的整数除法默认是截断小数部分，比如1.5截断后变为1,-1.5截断后变为-1。可见，在正整数时是向下取整， 在负整数时是向上取整。所以简单的实现可以将其变为负数，然后再根据原来的符号输出。但是其实有更简单的做法：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">ceil</span><span class="params">(<span class="keyword">int</span> op1, <span class="keyword">int</span> op2)</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">return</span> (op1 + op2 - <span class="number">1</span>)/op2;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>propositon: $\lceil a/b \rceil = (a+b-1)//b$ 其中//代表截断除，即C++自带的除法。<br>Proof:</p>
-<p>我们可以设 $a=k*b+r$ 其中 $k=\lfloor a/b \rfloor , 0 &lt; r &lt; b$ ,可得 </p>
-<p>$$(a+b-1)//b = [(k+1)*b+r-1]//b=k+1+(r-1)//b = k+1 = \lfloor a/b \rfloor+1=\lceil a/b \rceil$$</p>
-<p>QED</p>
-
+        <figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">bool</span> <span class="title">next_permutation</span><span class="params">(<span class="keyword">int</span> a[], <span class="keyword">int</span> s, <span class="keyword">int</span> e)</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">if</span> (s == e)</div><div class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">    <span class="keyword">int</span> i = e;</div><div class="line">    <span class="keyword">int</span> j = i;</div><div class="line">    i--;</div><div class="line">    <span class="keyword">while</span> (<span class="literal">true</span>)</div><div class="line">    &#123;</div><div class="line">        <span class="keyword">if</span> (j == s)</div><div class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">        <span class="keyword">if</span> (a[i] &gt;= a[j])</div><div class="line">        &#123;</div><div class="line">            j = i;</div><div class="line">            i--;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">else</span></div><div class="line">        &#123;</div><div class="line">            <span class="keyword">int</span> k = e;</div><div class="line">            <span class="keyword">while</span> (a[k] &lt; a[i])k--;</div><div class="line">            swap(a[i], a[k]);</div><div class="line">            reverse(a+i+<span class="number">1</span>, a+e+<span class="number">1</span>);</div><div class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">int</span> a[] = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>&#125;;</div><div class="line">    <span class="keyword">do</span> &#123;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; <span class="number">4</span>;i++)</div><div class="line">            <span class="built_in">cout</span> &lt;&lt; a[i] &lt;&lt; <span class="string">" "</span>;</div><div class="line">        <span class="built_in">printf</span>(<span class="string">"\n"</span>);</div><div class="line">    &#125;<span class="keyword">while</span>(next_permutation(a, <span class="number">0</span>, <span class="number">3</span>));</div><div class="line"></div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
       
     </div>
 
@@ -343,17 +324,13 @@ Python approachpython2中默认的整数除法是向下取整，根据以上性�
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/11/23/字符串最小表示算法/" rel="next" title="字符串最小表示算法">
-                <i class="fa fa-chevron-left"></i> 字符串最小表示算法
+              <a href="/2016/12/15/Codeforces-Round-384-Div-2-WriteUp/" rel="next" title="Codeforces Round #384 (Div. 2) WriteUp">
+                <i class="fa fa-chevron-left"></i> Codeforces Round #384 (Div. 2) WriteUp
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/12/07/Codeforces-Round-383-总结/" rel="prev" title="Codeforces Round #383 总结">
-                Codeforces Round #383 总结 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -379,8 +356,8 @@ Python approachpython2中默认的整数除法是向下取整，根据以上性�
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/11/28/Ceil函数实现/"
-           data-title="Ceil函数实现" data-url="http://chennanxu.github.io/2016/11/28/Ceil函数实现/">
+      <div class="ds-thread" data-thread-key="2017/03/01/计算全排列/"
+           data-title="计算全排列" data-url="http://chennanxu.github.io/2017/03/01/计算全排列/">
       </div>
     
   </div>
@@ -505,7 +482,7 @@ Python approachpython2中默认的整数除法是向下取整，根据以上性�
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Introductio"><span class="nav-number">1.</span> <span class="nav-text">Introductio</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Python-approach"><span class="nav-number">2.</span> <span class="nav-text">Python approach</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#C-C-approach"><span class="nav-number">3.</span> <span class="nav-text">C/C++ approach</span></a></li></ol></div>
+              <p class="post-toc-empty">This post does not have a Table of Contents</p>
             
           </div>
         </section>

@@ -172,7 +172,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Startseite
+            Home
           </a>
         </li>
       
@@ -182,7 +182,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
             
-            Kategorien
+            Categories
           </a>
         </li>
       
@@ -192,7 +192,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archiv
+            Archives
           </a>
         </li>
       
@@ -245,6 +245,106 @@
             
               
                 
+                <a class="post-title-link" href="/2017/03/01/计算全排列/" itemprop="url">
+                  计算全排列
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posted on</span>
+            <time itemprop="dateCreated" datetime="2017-03-01T20:23:30+08:00" content="2017-03-01">
+              2017-03-01
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/03/01/计算全排列/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/01/计算全排列/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">bool</span> <span class="title">next_permutation</span><span class="params">(<span class="keyword">int</span> a[], <span class="keyword">int</span> s, <span class="keyword">int</span> e)</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">if</span> (s == e)</div><div class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">    <span class="keyword">int</span> i = e;</div><div class="line">    <span class="keyword">int</span> j = i;</div><div class="line">    i--;</div><div class="line">    <span class="keyword">while</span> (<span class="literal">true</span>)</div><div class="line">    &#123;</div><div class="line">        <span class="keyword">if</span> (j == s)</div><div class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">        <span class="keyword">if</span> (a[i] &gt;= a[j])</div><div class="line">        &#123;</div><div class="line">            j = i;</div><div class="line">            i--;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">else</span></div><div class="line">        &#123;</div><div class="line">            <span class="keyword">int</span> k = e;</div><div class="line">            <span class="keyword">while</span> (a[k] &lt; a[i])k--;</div><div class="line">            swap(a[i], a[k]);</div><div class="line">            reverse(a+i+<span class="number">1</span>, a+e+<span class="number">1</span>);</div><div class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">int</span> a[] = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>&#125;;</div><div class="line">    <span class="keyword">do</span> &#123;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; <span class="number">4</span>;i++)</div><div class="line">            <span class="built_in">cout</span> &lt;&lt; a[i] &lt;&lt; <span class="string">" "</span>;</div><div class="line">        <span class="built_in">printf</span>(<span class="string">"\n"</span>);</div><div class="line">    &#125;<span class="keyword">while</span>(next_permutation(a, <span class="number">0</span>, <span class="number">3</span>));</div><div class="line"></div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/12/15/Codeforces-Round-384-Div-2-WriteUp/" itemprop="url">
                   Codeforces Round #384 (Div. 2) WriteUp
                 </a>
@@ -258,7 +358,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-12-15T20:12:56+08:00" content="2016-12-15">
               2016-12-15
             </time>
@@ -367,7 +467,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-12-14T10:18:01+08:00" content="2016-12-14">
               2016-12-14
             </time>
@@ -475,7 +575,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-12-08T20:51:15+08:00" content="2016-12-08">
               2016-12-08
             </time>
@@ -580,7 +680,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-12-07T16:04:51+08:00" content="2016-12-07">
               2016-12-07
             </time>
@@ -697,7 +797,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-11-28T16:40:28+08:00" content="2016-11-28">
               2016-11-28
             </time>
@@ -807,7 +907,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-11-23T11:23:53+08:00" content="2016-11-23">
               2016-11-23
             </time>
@@ -926,7 +1026,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-10-20T10:45:14+08:00" content="2016-10-20">
               2016-10-20
             </time>
@@ -1027,7 +1127,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-10-13T21:55:49+08:00" content="2016-10-13">
               2016-10-13
             </time>
@@ -1039,7 +1139,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">in</span>
+              <span class="post-meta-item-text">In</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
                   <a href="/categories/Note/" itemprop="url" rel="index">
@@ -1173,7 +1273,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <span class="post-meta-item-text">Posted on</span>
             <time itemprop="dateCreated" datetime="2016-09-06T22:30:54+08:00" content="2016-09-06">
               2016-09-06
             </time>
@@ -1185,7 +1285,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">in</span>
+              <span class="post-meta-item-text">In</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
                   <a href="/categories/Algorithm/" itemprop="url" rel="index">
@@ -1267,149 +1367,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/08/28/MIT-6-042-Notes-1-Proofs/" itemprop="url">
-                  MIT 6.042 Notes_1 Proofs
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">Veröffentlicht am</span>
-            <time itemprop="dateCreated" datetime="2016-08-28T15:19:33+08:00" content="2016-08-28">
-              2016-08-28
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/08/28/MIT-6-042-Notes-1-Proofs/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/28/MIT-6-042-Notes-1-Proofs/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>MIT 6.042J,课程名称Mathematics for Computer Science。作为算法导论的先修课之一难度并不是很大，所以我决定在刷算导前先把这个课过一遍。<br>课程网址：<a href="http://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-042j-mathematics-for-computer-science-fall-2010/index.htm" target="_blank" rel="external">http://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-042j-mathematics-for-computer-science-fall-2010/index.htm</a></p>
-<p>第一章讲数理逻辑的一些基本概念。</p>
-<h2 id="Propositions（命题）"><a href="#Propositions（命题）" class="headerlink" title="Propositions（命题）"></a>Propositions（命题）</h2><p><strong>Def</strong>:A proposition is a statement that is either true or false</p>
-<p>高中的内容，没什么好说的了（美国高中不教数理逻辑的么？）</p>
-<h2 id="Predicates（断言）"><a href="#Predicates（断言）" class="headerlink" title="Predicates（断言）"></a>Predicates（断言）</h2><p><strong>Def</strong>:A predicate is a proposition whose truth depends on the value of one or more variables.</p>
-<h2 id="IMPLIES（推断）"><a href="#IMPLIES（推断）" class="headerlink" title="IMPLIES（推断）"></a>IMPLIES（推断）</h2><table>
-<thead>
-<tr>
-<th>P</th>
-<th style="text-align:right">Q</th>
-<th style="text-align:center">P implies Q</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>T</td>
-<td style="text-align:right">T</td>
-<td style="text-align:center">T</td>
-</tr>
-<tr>
-<td>T</td>
-<td style="text-align:right">F</td>
-<td style="text-align:center">F</td>
-</tr>
-<tr>
-<td>F</td>
-<td style="text-align:right">T</td>
-<td style="text-align:center">T</td>
-</tr>
-<tr>
-<td>F</td>
-<td style="text-align:right">F</td>
-<td style="text-align:center">T</td>
-</tr>
-</tbody>
-</table>
-<p><strong>ps:T for True,F for False</strong></p>
-<p>这个真值表（True table)是最骚的，因为可以概括为一句话：</p>
-<p>An implication is true exactly when the if-part is false or the then-part is true.</p>
-<p>也就是说这个命题是True：</p>
-<p>If pigs can fly, then you can understand the Chebyshev bound.</p>
-<p>因为If中的命题是假的，所以不管Then后面是什么，整个命题都为真。</p>
-<p>当两个推断的真值表相同时，称两个推断等价。比如一个命题与其逆否命题命题等价。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1455,8 +1412,8 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">11</span>
-              <span class="site-state-item-name">Artikel</span>
+              <span class="site-state-item-count">12</span>
+              <span class="site-state-item-name">posts</span>
             </a>
           </div>
 
@@ -1464,7 +1421,7 @@
             <div class="site-state-item site-state-categories">
               <a href="/categories">
                 <span class="site-state-item-count">2</span>
-                <span class="site-state-item-name">Kategorien</span>
+                <span class="site-state-item-name">categories</span>
               </a>
             </div>
           
@@ -1473,7 +1430,7 @@
             <div class="site-state-item site-state-tags">
               <a href="/tags">
                 <span class="site-state-item-count">6</span>
-                <span class="site-state-item-name">Tags</span>
+                <span class="site-state-item-name">tags</span>
               </a>
             </div>
           
@@ -1551,7 +1508,7 @@
 </div>
 
 <div class="powered-by">
-  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">
