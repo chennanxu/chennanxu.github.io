@@ -1,0 +1,684 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="graph," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="引言佩奇排名（PageRank），又称网页排名、谷歌左侧排名，是一种由搜索引擎根据网页之间相互的超链接计算的技術，而作为网页排名的要素之一，以Google公司創辦人拉里·佩奇（Larry Page）之姓來命名。 Google用它来体现网页的相关性和重要性，在搜索引擎优化操作中是經常被用來評估網頁优化的成效因素之一[1]。上面是维基百科对PageRank的解释，初看下来还是有点抽象。接下来本文将先介">
+<meta property="og:type" content="article">
+<meta property="og:title" content="深入理解PageRank">
+<meta property="og:url" content="http://chennanxu.github.io/2017/03/19/深入理解PageRank/index.html">
+<meta property="og:site_name" content="Doolittle">
+<meta property="og:description" content="引言佩奇排名（PageRank），又称网页排名、谷歌左侧排名，是一种由搜索引擎根据网页之间相互的超链接计算的技術，而作为网页排名的要素之一，以Google公司創辦人拉里·佩奇（Larry Page）之姓來命名。 Google用它来体现网页的相关性和重要性，在搜索引擎优化操作中是經常被用來評估網頁优化的成效因素之一[1]。上面是维基百科对PageRank的解释，初看下来还是有点抽象。接下来本文将先介">
+<meta property="og:updated_time" content="2017-03-19T13:24:11.604Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="深入理解PageRank">
+<meta name="twitter:description" content="引言佩奇排名（PageRank），又称网页排名、谷歌左侧排名，是一种由搜索引擎根据网页之间相互的超链接计算的技術，而作为网页排名的要素之一，以Google公司創辦人拉里·佩奇（Larry Page）之姓來命名。 Google用它来体现网页的相关性和重要性，在搜索引擎优化操作中是經常被用來評估網頁优化的成效因素之一[1]。上面是维基百科对PageRank的解释，初看下来还是有点抽象。接下来本文将先介">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: 'Author'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://chennanxu.github.io/2017/03/19/深入理解PageRank/"/>
+
+  <title> 深入理解PageRank | Doolittle </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Doolittle</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Kategorien
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archiv
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                深入理解PageRank
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <time itemprop="dateCreated" datetime="2017-03-19T18:24:26+08:00" content="2017-03-19">
+              2017-03-19
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/03/19/深入理解PageRank/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/19/深入理解PageRank/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h1><p>佩奇排名（PageRank），又称网页排名、谷歌左侧排名，是一种由搜索引擎根据网页之间相互的超链接计算的技術，而作为网页排名的要素之一，以Google公司創辦人拉里·佩奇（Larry Page）之姓來命名。 Google用它来体现网页的相关性和重要性，在搜索引擎优化操作中是經常被用來評估網頁优化的成效因素之一[1]。<br>上面是维基百科对PageRank的解释，初看下来还是有点抽象。接下来本文将先介绍什么是中心性以及两个中心性的度量指标，然后介绍PageRank的公式，最后阐述在其背后的数学原理。本文假设读者已经有基本的图论、线性代数、随机过程（特别是Markov Chain）的知识。</p>
+<h1 id="中心性"><a href="#中心性" class="headerlink" title="中心性"></a>中心性</h1><p>日常生活中我们的关系组成了所谓的社交网络。如果我们把两个人之间的关系看成连边，人看成节点，这样我们就能将我们的社交关系表示为一张图（Graph）。而节点的中心性就是一种度量节点在网络中的重要性的指标。回到社交网络中的例子，一般来说，当一个人认识的人越多，这个人也许就越重要，在相应的图中就表现为节点的度（Degree）越高。这就是第一个中心性——度中心性。写成公式就是$$ r = A\mathscr{L}$$<br>其中A是邻接矩阵，$\mathscr{L}$ 是元素全为1的列向量。</p>
+<p>度中心性非常直观也很好理解，但是仔细想想就会发现有问题。比如A和B认识的人的数量相同，但是A认识的人中重要的人更多，那A的重要性显然要比B高，因为A的关系“质量更高”。（你认识一个小学生和认识一个某高官给你带来的收益肯定是不一样的）。这给了我们一个启发，我们可以根据一个人认识的人的重要性来确定他的重要性，这就成了一个递归的概念，同样写成公式就是 $$ r = cAr $$</p>
+<p>其中c是一个常数，A为邻接矩阵，r为中心性向量。这是一个方程，要求出v只要解出这个方程就可以了。仔细观察，发现这个式子和特征向量的定义很像，实际上这里的v就是A的主特征向量（证明略去）。所以这种中心性也被称为特征向量中心性<br>。<br>求矩阵的主特征向量可以使用迭代法，也就是给v设定一个非零初始值，然后代入方程右边，得到新的v的值，然后一直这样进行下去，最终得到一个稳定的值，具体的原理请参考数值计算相关书籍。</p>
+<p>特征向量中心性看上去已经不错了，但是还是有几个问题，这里提出两个：</p>
+<p>1、如果你认识的重要的人本身是一个“社交达人”，那么这个人“贡献”给你的重要性也就没那么多了。毕竟物以稀为贵，一个博爱的人的爱是不值钱的。<br>2、如果一个节点的所有邻居节点的重要性都为0，那么会发生什么呢？根据公式，这个节点的重要性也将会是0。这显然是不合理的，当然这种情况只会出现在有向图中。比如一个节点的所有邻居节点都只有出度，那么所有的邻居节点的中心性都是0，从而使这个节点的中心性也为0。</p>
+<h1 id="PageRank初见"><a href="#PageRank初见" class="headerlink" title="PageRank初见"></a>PageRank初见</h1><p>前面提到了特征向量中心性的两个弊端。Katz中心性就是为了解决第二个弊端而提出的，做法就是给每个节点赋予一个初始中心性。而PageRank就是受到第二个弊端的启发（这里其实是我想当然的，但是PR确实很好的解决了第二个问题）而提出的。</p>
+<p>这里我们先把PR的计算公式写出来 </p>
+<p>$$r_i = \sum_j\frac{r_jA_ji}{k_j}$$</p>
+<p>这里 $ k_j $ 表示一个节点的出度可以看到PR值实际上就是把邻居节点的中心性除以该节点的出度，也就是说一个节点的出度越高，贡献给邻居节点的中心性被稀释得越多。<br>写成矩阵形式：</p>
+<p>$$ r^T = r^TH $$</p>
+<p>这里$H_{ij} = \frac{A_ij}{k_i}$。</p>
+<p>这里特意使用了转置的写法，观察一下会发现和Markov Chain的概率转移方程很像，这是后话。PR值和之前的特征向量中心性一样可以使用迭代法进行计算。</p>
+<h1 id="PageRank改进"><a href="#PageRank改进" class="headerlink" title="PageRank改进"></a>PageRank改进</h1><p>实际上上面的公式并不是PageRank的完全体。首先，使用这个公式进行迭代并不总能够收敛，其次收敛值也不总为正值。在Brin和Page的论文[2]提到了改进的方法，他们使用了一个假象的上网用户。这个用户在网页组成的图中（就像之前提到的社交网络类似，只不过节点变成了网页，连边变成了超链接）进行随机游走。用户处在一个节点中时，进入邻居节点的概率相等，把这个随机过程的概率转移公式写出来就是上文提到的最初的PR计算公式，只不过RP值代表的就是用户处于某个节点的概率值，求PR值也就是求其概率的稳态分布。一个用户处于一个节点的概率越高，代表这个节点的中心性或者说重要性越高，这和之前对PR的阐述本质上是相同的，只是角度不一样。</p>
+<p>但是考虑这样一个情况，如果一个网页只有链向它的链接而没有指向其他网页的链接，也就是这个节点的出度为0。那么一旦一个用户进入了这个网页，那么他就会无法再浏览其他网页了，因为这个网页没有超链接让他点击。那么最后的稳态分布就会是零向量。</p>
+<p>Brin和Page的解决方案是，当一个用户进入一个死胡同时，将会等概率地进入其他网页，表现在公式上就是将概率转移矩阵全0行替换掉，所有的元素之和为1并且相等。这样新的矩阵就变成了$$ S = H + a(1/ne^T) $$<br>其中如果节点i是“死胡同”那么$a_i$ 就等于1。</p>
+<p>但是即使这样也不能保证收敛。因为你不能保证网页组成的网络是强连通的，如果你一旦进入某个网页，可能就无法再访问到某些网页了。用Markov Chain的术语讲就是可约。</p>
+<p>解决办法就是，当上网用户处在一个页面时，给他两个选择，一是遵循页面的链接，或者随机选择其他的网页进行访问。比如你正在刷知乎，突然想起来要去B站看一下视频，虽然知乎的页面并没有B站链接。表现在公式里就是给每一行一个随机权重：$$ G  = \alpha S + (1-\alpha)1/nee^T$$</p>
+<p>其中 $\alpha$ 代表的是用户做出第一个选择的概率(Goolge设置成0.85)。</p>
+<h1 id="从Markov-Chain的观点来看PageRank"><a href="#从Markov-Chain的观点来看PageRank" class="headerlink" title="从Markov Chain的观点来看PageRank"></a>从Markov Chain的观点来看PageRank</h1><p>上面已经提到过，PR的计算公式和Markov Chain的概率转移公式很相似（或者说一模一样）。我们来回顾一下Markov Chain的收敛条件是什么：<br>1、转移矩阵要是随机矩阵（各行元素之和为1）<br>2、矩阵要不可约<br>3、各态历经（ergodic），也即各状态要非周期且是正常返态。</p>
+<p>第一次调整，实际上是保证了第一条。第二次调整，让所有状态之间都有了连边，从而保证了第二条。并且所有状态都有自边，所以自然是非周期的。同样，第二次调整使矩阵的所有元素都不为0，所以所有状态必然都是常返态。至此，我们也证明了经过调整的PR公式最终会收敛到一个正值。</p>
+<h1 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h1><p>  本文主要参考了[3]这本书，实际上这篇文章更确切的说是这本书的读书笔记。但是[3]看起来还是比较吃力的，写的简略而啰嗦。随机过程和Markov Chain的相关知识可以参考[4]。有关网络的中心性参考了Newman的[5]，这本书深入浅出，是一本不错的入门读物。不过其中的Pagerank计算公式和论文里以及[3]里的公式都不相同，虽然看上去像那么回事，这是一直让我比较疑惑的。由于我比较懒，这篇文章没有配图也没有写例子（矩阵输入太烦了），如果需要直观的感受推荐看这篇文章[6]。</p>
+<p>最后，是大言不惭地使用了“深入理解”这个词，实际上写的内容还是比较浅显（简称标题党），并且由于水平实在太渣，可能也有一些错误，相关的定理也没有证明，如果有人有兴趣可以自己去翻一下我推荐的这几本教材。</p>
+<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><p>[1]<a href="https://www.wikiwand.com/zhhans/%E4%BD%A9%E5%A5%87%E6%8E%92%E5%90%8D" target="_blank" rel="external">https://www.wikiwand.com/zhhans/%E4%BD%A9%E5%A5%87%E6%8E%92%E5%90%8D</a><br>[2]The Anatomy of a Large-Scale Hypertextual Web Search Engine.Sergey Brin and Lawrence Page<br>[3]Google’s PageRank and Beyond:The Science of Search Engine .RankingsAmy N. Langville and Car l D. Meyer<br>[4]Introduction to Probability Models Ninth Edition.Sheldon M. Ross<br>[5]Networks: An Introduction. Mark Newman<br>[6]浅析PageRank算法.张洋.<a href="http://blog.codinglabs.org/articles/intro-to-pagerank.html" target="_blank" rel="external">http://blog.codinglabs.org/articles/intro-to-pagerank.html</a></p>
+<blockquote>
+<p>Written with <a href="https://stackedit.io/" target="_blank" rel="external">StackEdit</a>.</p>
+</blockquote>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/graph/" rel="tag">#graph</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/03/01/计算全排列/" rel="next" title="计算全排列">
+                <i class="fa fa-chevron-left"></i> 计算全排列
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/03/19/深入理解PageRank/"
+           data-title="深入理解PageRank" data-url="http://chennanxu.github.io/2017/03/19/深入理解PageRank/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Übersicht
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.png"
+               alt="ChenNanxu" />
+          <p class="site-author-name" itemprop="name">ChenNanxu</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">13</span>
+              <span class="site-state-item-name">Artikel</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">Kategorien</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">Tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/chennanxu" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/postal-12/activities" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              友情链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://cheng-chao.github.io/" title="Life is now" target="_blank">Life is now</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#引言"><span class="nav-number">1.</span> <span class="nav-text">引言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#中心性"><span class="nav-number">2.</span> <span class="nav-text">中心性</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#PageRank初见"><span class="nav-number">3.</span> <span class="nav-text">PageRank初见</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#PageRank改进"><span class="nav-number">4.</span> <span class="nav-text">PageRank改进</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#从Markov-Chain的观点来看PageRank"><span class="nav-number">5.</span> <span class="nav-text">从Markov Chain的观点来看PageRank</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#写在后面"><span class="nav-number">6.</span> <span class="nav-text">写在后面</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#参考文献"><span class="nav-number">6.1.</span> <span class="nav-text">参考文献</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2016 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ChenNanxu</span>
+</div>
+
+<div class="powered-by">
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"chennanxu1999"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    <script src="/vendors/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+  
+  
+
+  
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+  </script>
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for (i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  </script>
+  <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+  
+
+  
+
+</body>
+</html>
